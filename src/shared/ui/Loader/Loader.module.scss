@@ -13,7 +13,7 @@
   & > div,
   &::before,
   &::after {
-    content: '';
+    content: "";
     display: block;
     height: calc(var(--uib-size) * 0.18);
     width: calc(var(--uib-size) * 0.18);
