@@ -6,16 +6,17 @@ import styles from './LangSwitcher.module.scss';
 
 interface ILangSwitcherProps {
   className?: string;
+  short?: boolean;
 }
 
-const LangSwitcher: FC<ILangSwitcherProps> = ({ className, ...otrProps }) => {
+const LangSwitcher: FC<ILangSwitcherProps> = ({ className, short, ...otrProps }) => {
   const { t, i18n } = useTranslation();
 
   const onToggle = async () => i18n.changeLanguage(i18n.language === 'en' ? 'ru' : 'en');
 
   return (
     <Button onClick={onToggle} className={cn(styles.LangSwitcher, {}, [className])}>
-      {t('Язык')}
+      {t(short ? 'Короткий язык' : 'Язык')}
     </Button>
   );
 };

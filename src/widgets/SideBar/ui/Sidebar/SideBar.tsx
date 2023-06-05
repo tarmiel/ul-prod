@@ -4,6 +4,11 @@ import ThemeSwitcher from 'widgets/ThemeSwitcher/ui/ThemeSwitcher';
 import styles from './SideBar.module.scss';
 import { cn } from 'shared/lib/classNames/classNames';
 import { LangSwitcher } from 'widgets/LangSwitcher';
+import { AppLink } from 'shared/ui/AppLink/AppLink';
+import AboutIcon from 'shared/assets/icons/about-20-20.svg';
+import MainIcon from 'shared/assets/icons/main-20-20.svg';
+import { RoutePath } from 'shared/config/routerConfig/routerConfig';
+import { t } from 'i18next';
 
 const SideBar: FC = ({}) => {
   const [isCollapsed, setCollapsed] = useState(false);
@@ -12,12 +17,29 @@ const SideBar: FC = ({}) => {
 
   return (
     <div data-testid="sidebar" className={cn(styles.SideBar, { [styles.collapsed]: isCollapsed }, [])}>
-      <Button data-testid={'sidebar-toggle'} onClick={onToggle}>
-        |||
+      <Button
+        data-testid={'sidebar-toggle'}
+        className={styles.collapseBtn}
+        onClick={onToggle}
+        theme="backgroundInverted"
+        size="large"
+        square
+      >
+        {isCollapsed ? '>' : '<'}
       </Button>
+      <div className={styles.items}>
+        <AppLink theme="primary" to={RoutePath.main} className={styles.item}>
+          <MainIcon className={styles.icon} />
+          <span className={styles.link}>{t('Главная')}</span>
+        </AppLink>
+        <AppLink theme="primary" to={RoutePath.about} className={styles.item}>
+          <AboutIcon className={styles.icon} />
+          <span className={styles.link}>{t('О сайте')}</span>
+        </AppLink>
+      </div>
       <div className={styles.switchers}>
         <ThemeSwitcher />
-        <LangSwitcher className={styles.lang} />
+        <LangSwitcher short={isCollapsed} className={styles.lang} />
       </div>
     </div>
   );
