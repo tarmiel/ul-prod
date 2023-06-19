@@ -8,9 +8,10 @@ import { AppLink } from 'shared/ui/AppLink/AppLink';
 import AboutIcon from 'shared/assets/icons/about-20-20.svg';
 import MainIcon from 'shared/assets/icons/main-20-20.svg';
 import { RoutePath } from 'shared/config/routerConfig/routerConfig';
-import { t } from 'i18next';
+import { useTranslation } from 'react-i18next';
 
 const SideBar: FC = ({}) => {
+  const { t } = useTranslation();
   const [isCollapsed, setCollapsed] = useState(false);
 
   const onToggle = () => setCollapsed((prev) => !prev);

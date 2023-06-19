@@ -15,7 +15,7 @@ const LangSwitcher: FC<ILangSwitcherProps> = ({ className, short, ...otrProps })
   const onToggle = async () => i18n.changeLanguage(i18n.language === 'en' ? 'ru' : 'en');
 
   return (
-    <Button onClick={onToggle} className={cn(styles.LangSwitcher, {}, [className])}>
+    <Button theme="clearInverted" onClick={onToggle} className={cn(styles.LangSwitcher, {}, [className])}>
       {t(short ? 'Короткий язык' : 'Язык')}
     </Button>
   );

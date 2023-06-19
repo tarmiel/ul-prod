@@ -97,3 +97,11 @@ export const SquareSizeXl: Story = {
     size: 'xl',
   },
 };
+
+export const Disabled: Story = {
+  args: {
+    children: 'disabled',
+    theme: 'backgroundInverted',
+    disabled: true,
+  },
+};

@@ -16,6 +16,9 @@ export default {
   // cacheDirectory: "C:\\Users\\tim\\AppData\\Local\\Temp\\jest",
 
   // Automatically clear mock calls, instances and results before every test
+  globals: {
+    __IS_DEV__: true,
+  },
   clearMocks: true,
   testEnvironment: 'jsdom',
   coveragePathIgnorePatterns: ['\\\\node_modules\\\\'],
@@ -32,6 +35,7 @@ export default {
     '\\.s?css$': 'identity-obj-proxy',
     '\\.svg': path.resolve(__dirname, 'jestEmptyComponent.tsx'),
   },
+  transformIgnorePatterns: ['node_modules/(?!axios)'],
   // Indicates whether the coverage information should be collected while executing the test
   // collectCoverage: false,
 

@@ -13,7 +13,7 @@ module.exports = {
     ecmaVersion: 'latest',
     sourceType: 'module',
   },
-  plugins: ['react', '@typescript-eslint'],
+  plugins: ['react', '@typescript-eslint', 'react-hooks'],
   rules: {
     'react/jsx-indent': [2, 2],
     'react/jsx-indent-props': [2, 2],
@@ -32,6 +32,10 @@ module.exports = {
     'no-underscore-dangle': 'off',
     '@typescript-eslint/ban-ts-comment': 'off',
     'max-len': ['error', { ignoreComments: true, code: 120 }],
+    'react-hooks/rules-of-hooks': 'error',
+    'react-hooks/exhaustive-deps': 'warn',
+    'react/display-name': 'warn',
+    'no-param-reassign': 'off',
   },
   globals: {
     __IS_DEV__: true,
