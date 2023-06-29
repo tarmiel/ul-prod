@@ -48,7 +48,7 @@ const NavBar: FC<INavBarProps> = ({ className }) => {
       <Button theme="clearInverted" className={styles.links} onClick={onShowModal}>
         {t('Войти')}
       </Button>
-      <LoginModal isOpen={isAuthModal} onClose={onCloseModal} />
+      {isAuthModal && <LoginModal isOpen={isAuthModal} onClose={onCloseModal} />}
     </div>
   );
 };
