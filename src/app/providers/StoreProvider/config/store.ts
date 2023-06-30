@@ -5,6 +5,7 @@ import { NavigateOptions, To } from 'react-router-dom';
 import { $api } from 'shared/api/api';
 import { createReducerManager } from './reducerManager';
 import { StateSchema } from './StateSchema';
+import { CombinedState, Reducer } from 'redux';
 
 export function createReduxStore(
   initialState?: StateSchema,
@@ -20,7 +21,7 @@ export function createReduxStore(
   const reducerManager = createReducerManager(rootReducer);
 
   const store = configureStore({
-    reducer: reducerManager.reduce,
+    reducer: reducerManager.reduce as Reducer<CombinedState<StateSchema>>,
     devTools: __IS_DEV__,
     preloadedState: initialState,
     middleware: (getDefaultMiddleware) =>

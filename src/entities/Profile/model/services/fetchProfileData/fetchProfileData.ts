@@ -1,20 +1,17 @@
-// import { createAsyncThunk } from '@reduxjs/toolkit';
-// import { AxiosInstance } from 'axios';
-// import { ThunkConfig } from 'app/providers/StoreProvider';
-// import { Profile } from '../../types/profile';
+import { createAsyncThunk } from '@reduxjs/toolkit';
+import { ThunkConfig } from 'app/providers/StoreProvider';
+import { Profile } from '../../types/profile';
 
-// export const fetchProfileData = createAsyncThunk<Profile, void, ThunkConfig<string>>(
-//   'profile/fetchProfileData',
-//   async (_, thunkApi) => {
-//     const { extra, rejectWithValue } = thunkApi;
+export const fetchProfileData = createAsyncThunk<Profile, void, ThunkConfig<string>>(
+  'profile/fetchProfileData',
+  async (_, thunkApi) => {
+    try {
+      const response = await thunkApi.extra.api.get<Profile>('/profile');
 
-//     try {
-//       const response = await extra.api.get<Profile>('/profile');
-
-//       return response.data;
-//     } catch (e) {
-//       console.log(e);
-//       return rejectWithValue('error');
-//     }
-//   }
-// );
+      return response.data;
+    } catch (e) {
+      console.log(e);
+      return thunkApi.rejectWithValue('error');
+    }
+  }
+);

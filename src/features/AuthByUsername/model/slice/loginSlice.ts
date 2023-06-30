@@ -6,7 +6,7 @@ const initialState: LoginSchema = {
   username: '',
   password: '',
   isLoading: false,
-  error: null,
+  error: undefined,
 };
 
 export const loginSlice = createSlice({
@@ -24,7 +24,7 @@ export const loginSlice = createSlice({
     // Add reducers for additional action types here, and handle loading state as needed
     builder
       .addCase(loginByUsername.pending, (state, action) => {
-        state.error = null;
+        state.error = undefined;
         state.isLoading = true;
       })
       .addCase(loginByUsername.fulfilled, (state, action) => {

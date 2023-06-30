@@ -35,6 +35,7 @@ module.exports = {
     'react/display-name': 'warn',
     'no-param-reassign': 'off',
     'no-unused-vars': 'off',
+    'no-undef': 'off',
     '@typescript-eslint/ban-ts-comment': 'off',
     '@typescript-eslint/no-unused-vars': ['warn'],
   },
