@@ -1,15 +1,11 @@
-import React, { FC, useCallback, useState } from 'react';
+import React, { FC, memo, useCallback, useState } from 'react';
 import { cn } from 'shared/lib/classNames/classNames';
 import styles from './NavBar.module.scss';
 import { Button } from 'shared/ui/Button/Button';
 import { useTranslation } from 'react-i18next';
 import { LoginModal } from 'features/AuthByUsername';
-// =====
-// import { getUserAuthData, userActions } from 'entities/User';
-import { getUserAuthData } from './../../../entities/User/model/selectors/getUserAuthData/getUserAuthData';
-import { userActions } from './../../../entities/User/model/slice/userSlice';
-// =====
 import { useDispatch, useSelector } from 'react-redux';
+import { getUserAuthData, userActions } from 'entities/User';
 
 interface INavBarProps {
   className?: string;
@@ -53,4 +49,4 @@ const NavBar: FC<INavBarProps> = ({ className }) => {
   );
 };
 
-export default NavBar;
+export default memo(NavBar);

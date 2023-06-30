@@ -1,12 +1,16 @@
 /* eslint-disable indent */
 /* eslint-disable react/display-name */
+
 import { DeepPartial, ReducersMapObject } from '@reduxjs/toolkit';
 import { Decorator } from '@storybook/react';
 import { StateSchema, StoreProvider } from 'app/providers/StoreProvider';
+import { profileReducer } from 'entities/Profile';
+
 import { loginReducer } from 'features/AuthByUsername';
 
 const defaultReducers: DeepPartial<ReducersMapObject<StateSchema>> = {
   loginForm: loginReducer,
+  profile: profileReducer,
 };
 
 export const StoreDecorator =

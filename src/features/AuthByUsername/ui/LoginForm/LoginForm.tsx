@@ -13,6 +13,7 @@ import { getLoginUsername } from '../../model/selectors/getLoginUsername/getLogi
 import { loginByUsername } from '../../model/services/loginByUsername/loginByUsername';
 import { loginActions, loginReducer } from '../../model/slice/loginSlice';
 import styles from './LoginForm.module.scss';
+import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 
 const initialReducers: ReducersList = {
   loginForm: loginReducer,
@@ -20,11 +21,12 @@ const initialReducers: ReducersList = {
 
 export interface ILoginFormProps {
   className?: string;
+  onSuccess?: () => void;
 }
 
-const LoginForm: FC<ILoginFormProps> = ({ className }) => {
+const LoginForm: FC<ILoginFormProps> = ({ onSuccess, className }) => {
   const { t } = useTranslation();
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const username = useSelector(getLoginUsername);
   const password = useSelector(getLoginPassword);
   const isLoading = useSelector(getLoginIsLoading);
@@ -44,12 +46,15 @@ const LoginForm: FC<ILoginFormProps> = ({ className }) => {
     [dispatch]
   );
 
-  const onLogin = useCallback(() => {
-    dispatch(loginByUsername({ username, password }));
-  }, [dispatch, username, password]);
+  const onLogin = useCallback(async () => {
+    const result = await dispatch(loginByUsername({ username, password }));
+    if (result.meta.requestStatus === 'fulfilled') {
+      onSuccess?.();
+    }
+  }, [dispatch, username, password, onSuccess]);
 
   return (
-    <DynamicModuleLoader reducers={initialReducers}>
+    <DynamicModuleLoader reducers={initialReducers} removeAfterUnmount>
       <div className={cn(styles.LoginForm, {}, [className])}>
         <Text title={t('Форма авторизации')} className={styles.title} />
         {error && <Text theme="error">{error}</Text>}

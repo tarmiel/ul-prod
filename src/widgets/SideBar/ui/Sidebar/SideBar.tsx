@@ -1,20 +1,20 @@
-import React, { FC, useState } from 'react';
-import { Button } from 'shared/ui/Button/Button';
-import ThemeSwitcher from 'widgets/ThemeSwitcher/ui/ThemeSwitcher';
-import styles from './SideBar.module.scss';
+import { FC, memo, useMemo, useState } from 'react';
 import { cn } from 'shared/lib/classNames/classNames';
+import { Button } from 'shared/ui/Button/Button';
 import { LangSwitcher } from 'widgets/LangSwitcher';
-import { AppLink } from 'shared/ui/AppLink/AppLink';
-import AboutIcon from 'shared/assets/icons/about-20-20.svg';
-import MainIcon from 'shared/assets/icons/main-20-20.svg';
-import { RoutePath } from 'shared/config/routerConfig/routerConfig';
-import { useTranslation } from 'react-i18next';
+import ThemeSwitcher from 'widgets/ThemeSwitcher/ui/ThemeSwitcher';
+import { SideBarItemsList } from '../../model/items';
+import SideBarItem from '../SidebarItem/SideBarItem';
+import styles from './SideBar.module.scss';
 
 const SideBar: FC = ({}) => {
-  const { t } = useTranslation();
   const [isCollapsed, setCollapsed] = useState(false);
 
   const onToggle = () => setCollapsed((prev) => !prev);
+
+  const itemsList = useMemo(() => {
+    return SideBarItemsList.map((item) => <SideBarItem item={item} key={item.path} collapsed={isCollapsed} />);
+  }, [isCollapsed]);
 
   return (
     <div data-testid="sidebar" className={cn(styles.SideBar, { [styles.collapsed]: isCollapsed }, [])}>
@@ -28,16 +28,7 @@ const SideBar: FC = ({}) => {
       >
         {isCollapsed ? '>' : '<'}
       </Button>
-      <div className={styles.items}>
-        <AppLink theme="primary" to={RoutePath.main} className={styles.item}>
-          <MainIcon className={styles.icon} />
-          <span className={styles.link}>{t('Главная')}</span>
-        </AppLink>
-        <AppLink theme="primary" to={RoutePath.about} className={styles.item}>
-          <AboutIcon className={styles.icon} />
-          <span className={styles.link}>{t('О сайте')}</span>
-        </AppLink>
-      </div>
+      <div className={styles.items}>{itemsList}</div>
       <div className={styles.switchers}>
         <ThemeSwitcher />
         <LangSwitcher short={isCollapsed} className={styles.lang} />
@@ -46,4 +37,4 @@ const SideBar: FC = ({}) => {
   );
 };
 
-export default SideBar;
+export default memo(SideBar);
