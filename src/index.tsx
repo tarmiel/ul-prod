@@ -1,12 +1,11 @@
-import { ErrorBoundary } from 'app/providers/ErrorBoundary';
-import StoreProvider from 'app/providers/StoreProvider/ui/StoreProvider';
-import { ThemeProvider } from 'app/providers/ThemeProvider';
 import { render } from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
+import { ThemeProvider } from 'app/providers/ThemeProvider';
+import { StoreProvider } from 'app/providers/StoreProvider';
 import App from './app/App';
-
-import 'shared/config/i18n/i18n';
-import './app/styles/index.scss';
+import 'app/styles/index.scss';
+import './shared/config/i18n/i18n';
+import { ErrorBoundary } from './app/providers/ErrorBoundary';
 
 render(
   <BrowserRouter>
