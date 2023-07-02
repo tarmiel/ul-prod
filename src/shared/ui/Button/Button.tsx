@@ -2,7 +2,14 @@ import React, { FC, ButtonHTMLAttributes } from 'react';
 import { cn } from 'shared/lib/classNames/classNames';
 import styles from './Button.module.scss';
 
-type ButtonTheme = 'clear' | 'outline' | 'outlineInverted' | 'background' | 'backgroundInverted' | 'clearInverted';
+type ButtonTheme =
+  | 'clear'
+  | 'outline'
+  | 'outlineInverted'
+  | 'background'
+  | 'backgroundInverted'
+  | 'clearInverted'
+  | 'outline_red';
 type ButtonSize = 'medium' | 'large' | 'xl';
 
 interface IButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {

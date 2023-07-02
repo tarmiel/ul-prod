@@ -56,3 +56,27 @@ export const OnlyText: Story = {
     children: 'Text',
   },
 };
+
+export const AlignLeft: Story = {
+  args: {
+    title: 'Title',
+    children: 'Text Text Text',
+    align: 'left',
+  },
+};
+
+export const AlignCenter: Story = {
+  args: {
+    title: 'Title',
+    children: 'Text Text Text',
+    align: 'center',
+  },
+};
+
+export const AlignRight: Story = {
+  args: {
+    title: 'Title',
+    children: 'Text Text Text',
+    align: 'right',
+  },
+};

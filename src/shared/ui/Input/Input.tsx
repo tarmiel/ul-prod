@@ -7,13 +7,14 @@ type HTMLInputProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'value' | 'onC
 
 interface InputProps extends HTMLInputProps {
   className?: string;
-  value?: string;
+  value?: string | number;
   onChange?: (value: string) => void;
   autofocus?: boolean;
+  readOnly?: boolean;
 }
 
 const Input = memo((props: InputProps) => {
-  const { className, value, onChange, type = 'text', placeholder, autofocus, ...otherProps } = props;
+  const { className, value, onChange, type = 'text', placeholder, autofocus, readOnly, ...otherProps } = props;
   const ref = useRef<HTMLInputElement>(null);
   const [isFocused, setIsFocused] = useState(false);
   const [caretPosition, setCaretPosition] = useState(0);
@@ -43,7 +44,7 @@ const Input = memo((props: InputProps) => {
   };
 
   return (
-    <div className={cn(styles.InputWrapper, {}, [className])}>
+    <div className={cn(styles.InputWrapper, { [styles.readOnly]: readOnly }, [className])}>
       {placeholder && <div className={styles.placeholder}>{`${placeholder}>`}</div>}
       <div className={styles.caretWrapper}>
         <input
@@ -55,9 +56,10 @@ const Input = memo((props: InputProps) => {
           onFocus={onFocus}
           onBlur={onBlur}
           onSelect={onSelect}
+          readOnly={readOnly}
           {...otherProps}
         />
-        {isFocused && <span className={styles.caret} style={{ left: `${caretPosition * 9}px` }} />}
+        {isFocused && !readOnly && <span className={styles.caret} style={{ left: `${caretPosition * 9}px` }} />}
       </div>
     </div>
   );
