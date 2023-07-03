@@ -25,7 +25,7 @@ const initialReducers: ReducersList = {
 };
 
 const ProfilePage: FC = ({}) => {
-  const { t } = useTranslation();
+  const { t } = useTranslation('profile');
   const dispatch = useAppDispatch();
   const profileFormData = useSelector(getProfileForm);
   const profileError = useSelector(getProfileError);
