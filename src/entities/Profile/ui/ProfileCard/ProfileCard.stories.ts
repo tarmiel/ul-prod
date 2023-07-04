@@ -4,6 +4,7 @@ import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDeco
 import { Theme } from 'app/providers/ThemeProvider';
 import { Currency } from 'entities/Currency';
 import { Country } from 'entities/Country';
+import avatar from 'shared/assets/tests/storybook.jpg';
 
 const meta: Meta<typeof ProfileCard> = {
   title: 'entities/ProfileCard',
@@ -24,6 +25,7 @@ export const Light: Story = {
       firstname: 'asd',
       city: 'asf',
       currency: Currency.USD,
+      avatar,
     },
   },
 };
@@ -38,6 +40,7 @@ export const Dark: Story = {
       firstname: 'asd',
       city: 'asf',
       currency: Currency.USD,
+      avatar,
     },
   },
   decorators: [ThemeDecorator(Theme.DARK)],

@@ -7,6 +7,7 @@ interface ITextProps {
   className?: string;
   theme?: 'primary' | 'error';
   align?: 'left' | 'right' | 'center';
+  size?: 'medium' | 'large';
 }
 
 export const Text: FC<ITextProps> = ({
@@ -15,10 +16,11 @@ export const Text: FC<ITextProps> = ({
   className,
   theme = 'primary',
   align = 'left',
+  size = 'medium',
   ...otrProps
 }) => {
   return (
-    <div className={cn(styles.Text, {}, [className, styles[theme], styles[align]])} {...otrProps}>
+    <div className={cn(styles.Text, {}, [className, styles[theme], styles[align], styles[size]])} {...otrProps}>
       {title && <p className={styles.title}>{title}</p>}
       {children && <p className={styles.text}>{children}</p>}
     </div>
