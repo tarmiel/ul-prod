@@ -14,7 +14,7 @@ const SideBarItem: FC<ISideBarItemProps> = ({ item, collapsed }) => {
   const { t } = useTranslation();
 
   return (
-    <AppLink theme="primary" to={item.path} className={cn(styles.item, { [styles.collapsed]: collapsed })}>
+    <AppLink theme="secondary" to={item.path} className={cn(styles.item, { [styles.collapsed]: collapsed })}>
       <item.icon className={styles.icon} />
       <span className={styles.link}>{t(item.text)}</span>
     </AppLink>

@@ -1,18 +1,20 @@
-import { FC, memo, useEffect } from 'react';
-import { cn } from 'shared/lib/classNames/classNames';
-import styles from './ArticleDetailsPage.module.scss';
-import { useTranslation } from 'react-i18next';
 import { ArticleDetails } from 'entities/Article';
-import { useParams } from 'react-router-dom';
-import { Text } from 'shared/ui/Text/Text';
 import { CommentList } from 'entities/Comment';
-import DynamicModuleLoader, { ReducersList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
-import { articleDetailsCommentsReducer, getArticleComments } from '../../model/slice/articleDetailsCommentsSlice';
-import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
-import { fetchCommentsByArticleId } from '../../model/services/fetchCommentsByArticleId/fetchCommentsByArticleId';
+import { AddCommentForm } from 'features/addCommentForm';
+import { FC, memo, useCallback } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
-import { getArticleCommentsError, getArticleCommentsIsLoading } from '../../model/selectors/comments';
+import { useParams } from 'react-router-dom';
+import { cn } from 'shared/lib/classNames/classNames';
+import DynamicModuleLoader, { ReducersList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
+import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
+import { Text } from 'shared/ui/Text/Text';
+import { getArticleCommentsIsLoading } from '../../model/selectors/comments';
+import { addCommentForArticle } from '../../model/services/addCommentForArticle/addCommentForArticle';
+import { fetchCommentsByArticleId } from '../../model/services/fetchCommentsByArticleId/fetchCommentsByArticleId';
+import { articleDetailsCommentsReducer, getArticleComments } from '../../model/slice/articleDetailsCommentsSlice';
+import styles from './ArticleDetailsPage.module.scss';
 
 interface IArticleDetailsPageProps {
   className?: string;
@@ -33,6 +35,12 @@ const ArticleDetailsPage: FC<IArticleDetailsPageProps> = ({ className }) => {
     dispatch(fetchCommentsByArticleId(id));
   });
 
+  const onSendComment = useCallback(
+    (text: string) => {
+      dispatch(addCommentForArticle(text));
+    },
+    [dispatch]
+  );
   if (!id) {
     return <div className={cn(styles.ArticleDetailsPage, {}, [className])}>{t('Статья не найдена')}</div>;
   }
@@ -42,6 +50,7 @@ const ArticleDetailsPage: FC<IArticleDetailsPageProps> = ({ className }) => {
       <div className={cn(styles.ArticleDetailsPage, {}, [className])}>
         <ArticleDetails id={id} />
         <Text title={t('Комментарии')} className={styles.commentTitle} />
+        <AddCommentForm onSendComment={onSendComment} />
         <CommentList isLoading={commentsIsLoading} comments={comments} />
       </div>
     </DynamicModuleLoader>

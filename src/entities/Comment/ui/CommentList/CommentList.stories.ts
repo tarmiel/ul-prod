@@ -12,11 +12,49 @@ const meta: Meta<typeof CommentList> = {
 export default meta;
 type Story = StoryObj<typeof CommentList>;
 
-export const Light: Story = {
-  args: {},
+export const Normal: Story = {
+  args: {
+    comments: [
+      {
+        id: '1',
+        text: 'hello world',
+        user: {
+          id: '1',
+          username: 'Vasya',
+          avatar: 'https://xakep.ru/wp-content/uploads/2018/05/171485/KuroiSH-hacker.jpg',
+        },
+      },
+      {
+        id: '2',
+        text: 'Comment 2',
+        user: {
+          id: '1',
+          username: 'Petya',
+          avatar: 'https://xakep.ru/wp-content/uploads/2018/05/171485/KuroiSH-hacker.jpg',
+        },
+      },
+    ],
+  },
 };
 
-export const Dark: Story = {
-  args: {},
-  decorators: [ThemeDecorator(Theme.DARK)],
+export const Loading: Story = {
+  args: {
+    comments: [
+      {
+        id: '1',
+        text: 'hello world',
+        user: {
+          id: '1',
+          username: 'Vasya',
+          avatar: 'https://xakep.ru/wp-content/uploads/2018/05/171485/KuroiSH-hacker.jpg',
+        },
+      },
+    ],
+    isLoading: true,
+  },
+};
+export const NoComments: Story = {
+  args: {
+    comments: [],
+  },
 };
