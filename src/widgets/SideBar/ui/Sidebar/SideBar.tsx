@@ -3,25 +3,26 @@ import { cn } from 'shared/lib/classNames/classNames';
 import { Button } from 'shared/ui/Button/Button';
 import { LangSwitcher } from 'widgets/LangSwitcher';
 import ThemeSwitcher from 'widgets/ThemeSwitcher/ui/ThemeSwitcher';
-import { SideBarItemsList } from '../../model/items';
 import SideBarItem from '../SidebarItem/SideBarItem';
 import styles from './SideBar.module.scss';
 import { useSelector } from 'react-redux';
 import { getUserAuthData } from 'entities/User';
+import { getSideBarItems } from 'widgets/SideBar/model/selectors/getSideBarItems';
 
 const SideBar: FC = ({}) => {
   const [isCollapsed, setCollapsed] = useState(false);
+  const sideBarItemsList = useSelector(getSideBarItems);
   const auth = useSelector(getUserAuthData);
 
   const onToggle = () => setCollapsed((prev) => !prev);
 
   const itemsList = useMemo(() => {
-    return SideBarItemsList.map((item) => {
+    return sideBarItemsList.map((item) => {
       if (!item.authOnly || auth) {
         return <SideBarItem item={item} key={item.path} collapsed={isCollapsed} />;
       }
     });
-  }, [auth, isCollapsed]);
+  }, [auth, isCollapsed, sideBarItemsList]);
 
   return (
     <div data-testid="sidebar" className={cn(styles.SideBar, { [styles.collapsed]: isCollapsed }, [])}>

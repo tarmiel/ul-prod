@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 import { AppLink } from 'shared/ui/AppLink/AppLink';
-import { ISideBarItem } from '../../model/items';
+import { ISideBarItem } from '../../model/types/sideBar';
 import styles from './SideBarItem.module.scss';
 import { cn } from 'shared/lib/classNames/classNames';
 
