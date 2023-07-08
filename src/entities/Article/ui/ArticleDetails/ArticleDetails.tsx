@@ -85,11 +85,11 @@ const ArticleDetails: FC<IArticleDetailsProps> = ({ id }) => {
           {article?.subtitle}
         </Text>
         <div className={styles.articleInfo}>
-          <Icon className={styles.icon} SvgIcon={EyeIcon} />
+          <Icon className={styles.icon} Svg={EyeIcon} />
           <Text>{String(article?.views)}</Text>
         </div>
         <div className={styles.articleInfo}>
-          <Icon className={styles.icon} SvgIcon={CalendarIcon} />
+          <Icon className={styles.icon} Svg={CalendarIcon} />
           <Text>{article?.createdAt}</Text>
         </div>
         {article?.blocks.map(renderBlocks)}

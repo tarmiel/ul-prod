@@ -1,9 +1,12 @@
+import { User } from 'entities/User';
+
 export interface Article {
   id: string;
   title: string;
   subtitle: string;
   img: string;
   views: number;
+  user: User;
   createdAt: string;
   type: ArticleType[];
   blocks: ArticleBlock[];
@@ -36,3 +39,5 @@ export interface ArticleImageBlock extends ArticleBlockBase {
   src: string;
   title: string;
 }
+
+export type ArticleView = 'big' | 'small';

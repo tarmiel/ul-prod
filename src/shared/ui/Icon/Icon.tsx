@@ -4,11 +4,11 @@ import { cn } from 'shared/lib/classNames/classNames';
 
 interface IIconProps extends React.SVGProps<SVGSVGElement> {
   className?: string;
-  SvgIcon: React.VFC<React.SVGProps<SVGSVGElement>>;
+  Svg: React.VFC<React.SVGProps<SVGSVGElement>>;
 }
 
-const Icon: FC<IIconProps> = ({ SvgIcon, className, ...otrProps }) => {
-  return <SvgIcon className={cn(styles.Icon, {}, [className])} {...otrProps} />;
+const Icon: FC<IIconProps> = ({ Svg, className, ...otrProps }) => {
+  return <Svg className={cn(styles.Icon, {}, [className])} {...otrProps} />;
 };
 
 export default memo(Icon);

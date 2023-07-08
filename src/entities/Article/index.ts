@@ -8,3 +8,5 @@ export {
   getArticleDetailsError,
   getArticleDetailsIsLoading,
 } from './model/selectors/articleDetails';
+
+export { default as ArticleList } from './ui/ArticleList/ArticleList';

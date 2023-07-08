@@ -4,7 +4,7 @@ import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDeco
 import { Theme } from 'app/providers/ThemeProvider';
 
 const meta: Meta<typeof CommentList> = {
-  title: 'entities/CommentList',
+  title: 'entities/Comment/CommentList',
   component: CommentList,
   argTypes: {},
 };
