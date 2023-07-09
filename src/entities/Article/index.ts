@@ -10,3 +10,5 @@ export {
 } from './model/selectors/articleDetails';
 
 export { default as ArticleList } from './ui/ArticleList/ArticleList';
+
+export { default as ArticleViewSelector } from './ui/ArticleViewSelector/ArticleViewSelector';
