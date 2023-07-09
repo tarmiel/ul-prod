@@ -25,7 +25,7 @@ const SideBar: FC = ({}) => {
   }, [auth, isCollapsed, sideBarItemsList]);
 
   return (
-    <div data-testid="sidebar" className={cn(styles.SideBar, { [styles.collapsed]: isCollapsed }, [])}>
+    <menu data-testid="sidebar" className={cn(styles.SideBar, { [styles.collapsed]: isCollapsed }, [])}>
       <Button
         data-testid={'sidebar-toggle'}
         className={styles.collapseBtn}
@@ -41,7 +41,7 @@ const SideBar: FC = ({}) => {
         <ThemeSwitcher />
         <LangSwitcher short={isCollapsed} className={styles.lang} />
       </div>
-    </div>
+    </menu>
   );
 };
 

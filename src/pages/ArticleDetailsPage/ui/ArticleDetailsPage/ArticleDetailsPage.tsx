@@ -17,6 +17,7 @@ import { articleDetailsCommentsReducer, getArticleComments } from '../../model/s
 import styles from './ArticleDetailsPage.module.scss';
 import { RoutePath } from 'shared/config/routerConfig/routerConfig';
 import { Button } from 'shared/ui/Button/Button';
+import Page from 'shared/ui/Page/Page';
 
 interface IArticleDetailsPageProps {
   className?: string;
@@ -49,12 +50,12 @@ const ArticleDetailsPage: FC<IArticleDetailsPageProps> = ({ className }) => {
     [dispatch]
   );
   if (!id) {
-    return <div className={cn(styles.ArticleDetailsPage, {}, [className])}>{t('Статья не найдена')}</div>;
+    return <Page className={cn(styles.ArticleDetailsPage, {}, [className])}>{t('Статья не найдена')}</Page>;
   }
 
   return (
     <DynamicModuleLoader reducers={initialReducers} removeAfterUnmount>
-      <div className={cn(styles.ArticleDetailsPage, {}, [className])}>
+      <Page className={cn(styles.ArticleDetailsPage, {}, [className])}>
         <Button theme={'outline'} onClick={onBackToList}>
           {t('Назад к списку')}
         </Button>
@@ -62,7 +63,7 @@ const ArticleDetailsPage: FC<IArticleDetailsPageProps> = ({ className }) => {
         <Text title={t('Комментарии')} className={styles.commentTitle} />
         <AddCommentForm onSendComment={onSendComment} />
         <CommentList isLoading={commentsIsLoading} comments={comments} />
-      </div>
+      </Page>
     </DynamicModuleLoader>
   );
 };

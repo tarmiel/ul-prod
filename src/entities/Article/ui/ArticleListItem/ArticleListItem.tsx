@@ -20,7 +20,7 @@ interface IArticleListItemProps {
 }
 
 const ArticleListItem: FC<IArticleListItemProps> = ({ article, view, className }) => {
-  const { t } = useTranslation();
+  const { t } = useTranslation('articles');
   const navigate = useNavigate();
 
   const onOpenArticle = useCallback(() => {

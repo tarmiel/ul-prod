@@ -31,21 +31,21 @@ const NavBar: FC<INavBarProps> = ({ className }) => {
 
   if (authData) {
     return (
-      <div className={cn(styles.NavBar, {}, [className])}>
+      <header className={cn(styles.NavBar, {}, [className])}>
         <Button theme="clearInverted" className={styles.links} onClick={onLogout}>
           {t('Выйти')}
         </Button>
-      </div>
+      </header>
     );
   }
 
   return (
-    <div className={cn(styles.NavBar, {}, [className])}>
+    <header className={cn(styles.NavBar, {}, [className])}>
       <Button theme="clearInverted" className={styles.links} onClick={onShowModal}>
         {t('Войти')}
       </Button>
       {isAuthModal && <LoginModal isOpen={isAuthModal} onClose={onCloseModal} />}
-    </div>
+    </header>
   );
 };
 

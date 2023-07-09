@@ -1,11 +1,8 @@
 import React from 'react';
+import Page from 'shared/ui/Page/Page';
 
 const AboutPage = () => {
-  return (
-    <div>
-      ABOUT PAGE
-    </div>
-  );
+  return <Page>ABOUT PAGE</Page>;
 };
 
 export default AboutPage;

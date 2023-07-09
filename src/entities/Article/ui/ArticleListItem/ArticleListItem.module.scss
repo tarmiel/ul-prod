@@ -78,20 +78,21 @@
       align-items: center;
       justify-content: space-between;
       margin-top: 8px;
+    }
 
-      .types p {
-        width: 115px;
-        overflow: hidden;
-        white-space: nowrap;
-        text-overflow: ellipsis;
-      }
-      .views {
-        display: flex;
-        align-items: center;
+    .types p {
+      width: 115px;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
 
-        .viewsImg {
-          margin-top: 2px;
-        }
+    .views {
+      display: flex;
+      align-items: center;
+
+      .viewsImg {
+        margin-top: 2px;
       }
     }
 
