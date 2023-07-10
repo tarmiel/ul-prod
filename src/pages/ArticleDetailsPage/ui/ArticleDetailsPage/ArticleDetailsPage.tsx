@@ -17,7 +17,7 @@ import { articleDetailsCommentsReducer, getArticleComments } from '../../model/s
 import styles from './ArticleDetailsPage.module.scss';
 import { RoutePath } from 'shared/config/routerConfig/routerConfig';
 import { Button } from 'shared/ui/Button/Button';
-import Page from 'shared/ui/Page/Page';
+import Page from 'widgets/Page/Page';
 
 interface IArticleDetailsPageProps {
   className?: string;
