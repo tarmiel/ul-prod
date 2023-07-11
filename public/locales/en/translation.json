@@ -26,5 +26,21 @@
   "Укажите страну": "Choose country",
   "Комментарии отсутствуют": "No Comments",
   "Введите текст комментария": "Enter comment text",
-  "Отправить": "Send"
+  "Отправить": "Send",
+  "Поиск": "Search",
+  "возрастанию": "ascending",
+  "по": "in",
+  "убыванию": "descending",
+  "Айти": "IT",
+  "Экономика": "Economics",
+  "Все статьи": "All articles",
+  "Наука": "Science",
+  "Сортировать ПО": "Sort BY",
+  "дате создания": "created date",
+  "названию": "name",
+  "просмотрам": "views",
+  "Создание новой статьи": "Create new article",
+  "Редактирование статьи с ID = ": "Edit article with ID = ",
+  "Ulbi TV App": "Ulbi TV App",
+  "Создать статью": "Create article"
 }

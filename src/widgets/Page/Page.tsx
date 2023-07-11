@@ -41,7 +41,7 @@ const Page: FC<IPageProps> = ({ children, onScrollEnd, className }) => {
   return (
     <section ref={wrapperRef} className={cn(styles.Page, {}, [className])} onScroll={onScrollHandler}>
       {children}
-      <div ref={triggerRef}></div>
+      {onScrollEnd ? <div className={styles.trigger} ref={triggerRef}></div> : null}
     </section>
   );
 };

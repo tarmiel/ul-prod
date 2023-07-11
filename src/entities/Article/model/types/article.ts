@@ -12,7 +12,7 @@ export interface Article {
   blocks: ArticleBlock[];
 }
 
-export type ArticleType = 'IT' | 'SCIENCE' | 'ECONOMICS';
+export type ArticleType = 'ALL' | 'IT' | 'SCIENCE' | 'ECONOMICS';
 
 export type ArticleBlock = ArticleTextBlock | ArticleCodeBlock | ArticleImageBlock;
 
@@ -41,3 +41,5 @@ export interface ArticleImageBlock extends ArticleBlockBase {
 }
 
 export type ArticleView = 'big' | 'small';
+
+export type ArticleSortField = 'views' | 'title' | 'createdAt';

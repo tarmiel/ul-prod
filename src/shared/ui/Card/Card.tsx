@@ -5,11 +5,12 @@ import { cn } from 'shared/lib/classNames/classNames';
 interface ICardProps extends React.HTMLAttributes<HTMLDivElement> {
   className?: string;
   children: ReactNode;
+  theme?: 'normal' | 'outlined';
 }
 
-const Card: FC<ICardProps> = ({ children, className, ...otrProps }) => {
+const Card: FC<ICardProps> = ({ children, className, theme = 'normal', ...otrProps }) => {
   return (
-    <div className={cn(styles.Card, {}, [className])} {...otrProps}>
+    <div className={cn(styles.Card, {}, [className, styles[theme]])} {...otrProps}>
       {children}
     </div>
   );

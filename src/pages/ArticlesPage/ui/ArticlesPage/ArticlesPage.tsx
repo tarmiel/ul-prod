@@ -14,6 +14,9 @@ import { fetchNextArticlesPage } from '../../model/services/fetchNextArticlesPag
 import { initArticlesPage } from '../../model/services/initArticlesPage/initArticlesPage';
 import { articlesPageActions, articlesPageReducer, getArticles } from '../../model/slice/articlesPageSlice';
 import cls from './ArticlesPage.module.scss';
+import ArticlesPageFilters from '../ArticlesPageFilters/ArticlesPageFilters';
+import { useTranslation } from 'react-i18next';
+import { useSearchParams } from 'react-router-dom';
 
 interface ArticlesPageProps {
   className?: string;
@@ -25,22 +28,16 @@ const initialReducers: ReducersList = {
 
 const ArticlesPage = (props: ArticlesPageProps) => {
   const { className } = props;
-  // const { t } = useTranslation('articles');
+  const { t } = useTranslation('articles');
   const dispatch = useAppDispatch();
   const articles = useSelector(getArticles.selectAll);
   const articlesView = useSelector(getArticlesPageView);
   const articlesisLoading = useSelector(getArticlesPageIsLoading);
+  const [searchParams] = useSearchParams();
 
   useInitialEffect(() => {
-    dispatch(initArticlesPage());
+    dispatch(initArticlesPage(searchParams));
   });
-
-  const onChangeView = useCallback(
-    (view: ArticleView) => {
-      dispatch(articlesPageActions.setView(view));
-    },
-    [dispatch]
-  );
 
   const onLoadNextPart = useCallback(() => {
     dispatch(fetchNextArticlesPage());
@@ -49,8 +46,8 @@ const ArticlesPage = (props: ArticlesPageProps) => {
   return (
     <DynamicModuleLoader reducers={initialReducers} removeAfterUnmount={false}>
       <Page className={cn(cls.ArticlesPage, {}, [className])} onScrollEnd={onLoadNextPart}>
-        <ArticleViewSelector view={articlesView} onViewClick={onChangeView} />
-        <ArticleList articles={articles} view={articlesView} isLoading={articlesisLoading} />
+        <ArticlesPageFilters />
+        <ArticleList articles={articles} view={articlesView} isLoading={articlesisLoading} className={cls.list} />
       </Page>
     </DynamicModuleLoader>
   );
