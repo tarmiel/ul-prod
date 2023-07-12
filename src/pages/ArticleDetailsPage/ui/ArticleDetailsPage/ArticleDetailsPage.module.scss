@@ -1,7 +1,13 @@
 .ArticleDetailsPage {
   min-height: 100%;
-}
+  .commentTitle {
+    margin-top: 20px;
+  }
 
-.commentTitle {
-  margin-top: 20px;
+  .recommendations {
+    margin: 20px 0;
+    flex-wrap: nowrap;
+    overflow-y: hidden;
+    overflow-x: auto;
+  }
 }

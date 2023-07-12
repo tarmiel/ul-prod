@@ -9,15 +9,15 @@ import { profileReducer } from 'entities/Profile';
 
 import { loginReducer } from 'features/AuthByUsername';
 import { addCommentFormReducer } from 'features/addCommentForm/model/slice/addCommentFromSlice';
-import { articleDetailsCommentsReducer } from 'pages/ArticleDetailsPage/model/slice/articleDetailsCommentsSlice';
+import { articleDetailsPageReducer } from 'pages/ArticleDetailsPage/model/slice';
 import { ReducersList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 
 const defaultReducers: ReducersList = {
   loginForm: loginReducer,
   profile: profileReducer,
-  articleDetails: articleDetailsReducer,
-  articleDetailsComments: articleDetailsCommentsReducer,
   addCommentForm: addCommentFormReducer,
+  articleDetails: articleDetailsReducer,
+  articleDetailsPage: articleDetailsPageReducer,
 };
 
 export const StoreDecorator =

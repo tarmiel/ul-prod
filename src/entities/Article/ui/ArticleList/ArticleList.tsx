@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, HTMLAttributeAnchorTarget } from 'react';
 import styles from './ArticleList.module.scss';
 import { Article, ArticleView } from '../../model/types/article';
 import { cn } from 'shared/lib/classNames/classNames';
@@ -12,6 +12,7 @@ interface IArticleListProps {
   isLoading?: boolean;
   articles: Article[];
   view?: ArticleView;
+  target?: HTMLAttributeAnchorTarget;
 }
 
 const getSkeletons = (view: ArticleView) =>
@@ -19,11 +20,11 @@ const getSkeletons = (view: ArticleView) =>
     .fill(0)
     .map((item, index) => <ArticleListItemSkeleton className={styles.card} key={index} view={view} />);
 
-const ArticleList: FC<IArticleListProps> = ({ articles, view = 'small', isLoading, className }) => {
+const ArticleList: FC<IArticleListProps> = ({ articles, view = 'small', isLoading, target, className }) => {
   const { t } = useTranslation();
 
   const renderArticle = (article: Article) => {
-    return <ArticleListItem key={article.id} article={article} view={view} />;
+    return <ArticleListItem key={article.id} article={article} view={view} target={target} />;
   };
 
   if (!isLoading && !articles.length) {
