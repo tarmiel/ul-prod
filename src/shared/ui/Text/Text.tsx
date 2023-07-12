@@ -5,7 +5,7 @@ import styles from './Text.module.scss';
 interface ITextProps {
   title?: string;
   className?: string;
-  theme?: 'primary' | 'error';
+  theme?: 'primary' | 'inverted' | 'error';
   align?: 'left' | 'right' | 'center';
   size?: 'medium' | 'large';
 }

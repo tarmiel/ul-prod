@@ -20,8 +20,10 @@ import { fetchCommentsByArticleId } from '../../model/services/fetchCommentsByAr
 import { articleDetailsCommentsReducer, getArticleComments } from '../../model/slice/articleDetailsCommentsSlice';
 import { getArticleRecommendations } from '../../model/slice/articleDetailsPageRecommendationsSlice';
 import styles from './ArticleDetailsPage.module.scss';
+// eslint-disable-next-line max-len
 import { fetchArticleRecommendations } from '../../model/services/fetchArticleRecommendations/fetchArticleRecommendations';
 import { articleDetailsPageReducer } from '../../model/slice';
+import { ArticleDetailsPageHeader } from '../ArticleDetailsPageHeader/ArticleDetailsPageHeader';
 
 interface IArticleDetailsPageProps {
   className?: string;
@@ -37,13 +39,8 @@ const ArticleDetailsPage: FC<IArticleDetailsPageProps> = ({ className }) => {
   const dispatch = useAppDispatch();
   const comments = useSelector(getArticleComments.selectAll);
   const commentsIsLoading = useSelector(getArticleCommentsIsLoading);
-  const navigate = useNavigate();
   const recommendations = useSelector(getArticleRecommendations.selectAll);
   const recommendationsIsLoading = useSelector(getArticleRecommendationsIsLoading);
-
-  const onBackToList = useCallback(() => {
-    navigate(RoutePath.articles);
-  }, [navigate]);
 
   useInitialEffect(() => {
     dispatch(fetchCommentsByArticleId(id));
@@ -63,9 +60,7 @@ const ArticleDetailsPage: FC<IArticleDetailsPageProps> = ({ className }) => {
   return (
     <DynamicModuleLoader reducers={initialReducers} removeAfterUnmount>
       <Page className={cn(styles.ArticleDetailsPage, {}, [className])}>
-        <Button theme={'outline'} onClick={onBackToList}>
-          {t('Назад к списку')}
-        </Button>
+        <ArticleDetailsPageHeader />
         <ArticleDetails id={id} />
         <Text size="large" className={styles.commentTitle} title={t('Рекомендуем')} />
         <ArticleList

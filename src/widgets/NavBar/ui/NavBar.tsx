@@ -6,6 +6,9 @@ import { useTranslation } from 'react-i18next';
 import { LoginModal } from 'features/AuthByUsername';
 import { useDispatch, useSelector } from 'react-redux';
 import { getUserAuthData, userActions } from 'entities/User';
+import { Text } from 'shared/ui/Text/Text';
+import { AppLink } from 'shared/ui/AppLink/AppLink';
+import { RoutePath } from 'shared/config/routerConfig/routerConfig';
 
 interface INavBarProps {
   className?: string;
@@ -32,6 +35,10 @@ const NavBar: FC<INavBarProps> = ({ className }) => {
   if (authData) {
     return (
       <header className={cn(styles.NavBar, {}, [className])}>
+        <Text title={t('Some App')} theme="inverted" />
+        <AppLink to={RoutePath.article_create} theme="secondary" className={styles.createBtn}>
+          {t('Создать статью')}
+        </AppLink>
         <Button theme="clearInverted" className={styles.links} onClick={onLogout}>
           {t('Выйти')}
         </Button>
