@@ -3,7 +3,7 @@
   color: inherit;
   padding: 6px 15px;
 
-  &:hover {
+  &:hover:not(.disabled) {
     opacity: 0.8;
     fill-opacity: 80%;
     stroke-opacity: 80%;

@@ -8,7 +8,7 @@ import {
   profileActions,
   profileReducer,
 } from 'entities/Profile';
-import { FC, useCallback, useEffect } from 'react';
+import { FC, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import DynamicModuleLoader, { ReducersList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';

@@ -45,9 +45,14 @@ export const ProfileCard = ({
 
   if (isLoading) {
     return (
-      <HStack justify="center" max className={cn(styles.ProfileCard, { [styles.loading]: true }, [className])}>
+      <VStack
+        justify="center"
+        align="center"
+        max
+        className={cn(styles.ProfileCard, { [styles.loading]: true }, [className])}
+      >
         <Loader />
-      </HStack>
+      </VStack>
     );
   }
 
