@@ -57,10 +57,10 @@ export function ListBox(props: ListBoxProps) {
                 <li
                   className={cn(cls.item, {
                     [cls.active]: active,
+                    [cls.selected]: selected,
                     [cls.disabled]: item.disabled,
                   })}
                 >
-                  {selected && '!!!'}
                   {item.content}
                 </li>
               )}
