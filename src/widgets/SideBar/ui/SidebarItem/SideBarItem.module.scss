@@ -1,5 +1,4 @@
 .item {
-  margin-top: 10px;
   display: flex;
   align-items: center;
 }
@@ -8,6 +7,7 @@
   margin-left: 10px;
   opacity: 1;
   transition: 0.3s opacity;
+  white-space: nowrap;
 }
 
 .icon {

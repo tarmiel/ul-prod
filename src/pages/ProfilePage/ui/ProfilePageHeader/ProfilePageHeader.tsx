@@ -1,14 +1,13 @@
 import React, { FC, useCallback } from 'react';
 import { Button } from 'shared/ui/Button/Button';
 import { Text } from 'shared/ui/Text/Text';
-import styles from './ProfilePageHeader.module.scss';
 import { getProfileData, getProfileReadonly, profileActions } from 'entities/Profile';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
-import { cn } from 'shared/lib/classNames/classNames';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { updateProfileData } from 'entities/Profile';
 import { getUserAuthData } from 'entities/User';
+import { HStack } from 'shared/ui/Stack';
 
 interface IProfilePageHeaderProps {
   className?: string;
@@ -35,27 +34,27 @@ const ProfilePageHeader: FC<IProfilePageHeaderProps> = ({ className }) => {
   }, [dispatch]);
 
   return (
-    <div className={cn(styles.ProfilePageHeader, {}, [className])}>
+    <HStack justify="between" max className={className}>
       <Text title={t('Профиль')} />
       {user?.id === profile?.id && (
-        <div className={styles.controlBtns}>
+        <HStack gap={'8'}>
           {readonly ? (
-            <Button className={styles.editBtn} theme="outline" onClick={onEdit}>
+            <Button theme="outline" onClick={onEdit}>
               {t('Редактировать')}
             </Button>
           ) : (
             <>
-              <Button className={styles.cancelBtn} theme="outline_red" onClick={onCancelEdit}>
+              <Button theme="outline_red" onClick={onCancelEdit}>
                 {t('Отменить')}
               </Button>
-              <Button className={styles.saveBtn} theme="outline" onClick={onSave}>
+              <Button theme="outline" onClick={onSave}>
                 {t('Сохранить')}
               </Button>
             </>
           )}
-        </div>
+        </HStack>
       )}
-    </div>
+    </HStack>
   );
 };
 

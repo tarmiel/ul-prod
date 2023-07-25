@@ -8,6 +8,7 @@ import styles from './SideBar.module.scss';
 import { useSelector } from 'react-redux';
 import { getUserAuthData } from 'entities/User';
 import { getSideBarItems } from 'widgets/SideBar/model/selectors/getSideBarItems';
+import { VStack } from 'shared/ui/Stack';
 
 const SideBar: FC = ({}) => {
   const [isCollapsed, setCollapsed] = useState(false);
@@ -25,7 +26,7 @@ const SideBar: FC = ({}) => {
   }, [auth, isCollapsed, sideBarItemsList]);
 
   return (
-    <menu data-testid="sidebar" className={cn(styles.SideBar, { [styles.collapsed]: isCollapsed }, [])}>
+    <aside data-testid="sidebar" className={cn(styles.SideBar, { [styles.collapsed]: isCollapsed }, [])}>
       <Button
         data-testid={'sidebar-toggle'}
         className={styles.collapseBtn}
@@ -36,12 +37,14 @@ const SideBar: FC = ({}) => {
       >
         {isCollapsed ? '>' : '<'}
       </Button>
-      <div className={styles.items}>{itemsList}</div>
+      <VStack role="navigation" gap="8" className={styles.items}>
+        {itemsList}
+      </VStack>
       <div className={styles.switchers}>
         <ThemeSwitcher />
         <LangSwitcher short={isCollapsed} className={styles.lang} />
       </div>
-    </menu>
+    </aside>
   );
 };
 
