@@ -38,6 +38,7 @@ module.exports = {
     'no-undef': 'off',
     '@typescript-eslint/ban-ts-comment': 'off',
     '@typescript-eslint/no-unused-vars': ['warn'],
+    '@typescript-eslint/no-var-requires': ['warn'],
   },
   globals: {
     __IS_DEV__: true,
