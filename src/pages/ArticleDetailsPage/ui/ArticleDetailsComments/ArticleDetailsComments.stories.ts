@@ -3,7 +3,7 @@ import { ArticleDetailsComments } from './ArticleDetailsComments';
 import { StoreDecorator } from 'shared/config/storybook/StoreDecorator/StoreDecorator';
 
 const meta: Meta<typeof ArticleDetailsComments> = {
-  title: 'pages/ArticleDetailsComments',
+  title: 'pages/ArticleDetailsPage/ArticleDetailsComments',
   component: ArticleDetailsComments,
   argTypes: {},
   decorators: [StoreDecorator({})],

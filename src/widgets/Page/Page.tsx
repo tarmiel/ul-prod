@@ -1,4 +1,4 @@
-import React, { FC, MutableRefObject, UIEvent, useRef } from 'react';
+import React, { FC, MutableRefObject, ReactNode, UIEvent, useRef } from 'react';
 import { cn } from 'shared/lib/classNames/classNames';
 import styles from './Page.module.scss';
 import { useInfiniteScroll } from 'shared/lib/hooks/useInfiniteScroll/useInfiniteScroll';
@@ -13,6 +13,7 @@ import { useThrottle } from 'shared/lib/hooks/useThrottle/useThrottle';
 interface IPageProps {
   className?: string;
   onScrollEnd?: () => void;
+  children?: ReactNode;
 }
 
 const Page: FC<IPageProps> = ({ children, onScrollEnd, className }) => {

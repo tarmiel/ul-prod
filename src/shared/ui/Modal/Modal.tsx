@@ -1,4 +1,4 @@
-import React, { FC, useCallback, useEffect } from 'react';
+import React, { FC, ReactNode, useCallback, useEffect } from 'react';
 import styles from './Modal.module.scss';
 import { cn } from 'shared/lib/classNames/classNames';
 import { Portal } from '../Portal/Portal';
@@ -7,6 +7,7 @@ import { useTheme } from 'app/providers/ThemeProvider';
 interface IModalProps {
   isOpen?: boolean;
   onClose?: () => void;
+  children?: ReactNode;
 }
 
 const Modal: FC<IModalProps> = ({ children, isOpen, onClose }) => {

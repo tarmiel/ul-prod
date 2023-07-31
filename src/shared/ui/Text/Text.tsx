@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, ReactNode } from 'react';
 import { cn } from 'shared/lib/classNames/classNames';
 import styles from './Text.module.scss';
 
@@ -10,6 +10,7 @@ interface ITextProps {
   theme?: 'primary' | 'inverted' | 'error';
   align?: 'left' | 'right' | 'center';
   size?: TextSize;
+  children?: ReactNode;
 
   'data-testid'?: string;
 }
