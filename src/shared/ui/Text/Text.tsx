@@ -10,6 +10,8 @@ interface ITextProps {
   theme?: 'primary' | 'inverted' | 'error';
   align?: 'left' | 'right' | 'center';
   size?: TextSize;
+
+  'data-testid'?: string;
 }
 
 type HeaderTagType = 'h1' | 'h2' | 'h3';
@@ -27,13 +29,23 @@ export const Text: FC<ITextProps> = ({
   theme = 'primary',
   align = 'left',
   size = 'medium',
+  'data-testid': dataTestId = 'Text',
+
   ...otrProps
 }) => {
   const HeaderTag = mapSizeToHeaderTag[size];
   return (
     <div className={cn(styles.Text, {}, [className, styles[theme], styles[align], styles[size]])} {...otrProps}>
-      {title && <HeaderTag className={styles.title}>{title}</HeaderTag>}
-      {children && <p className={styles.text}>{children}</p>}
+      {title && (
+        <HeaderTag className={styles.title} data-testid={`${dataTestId}.Header`}>
+          {title}
+        </HeaderTag>
+      )}
+      {children && (
+        <p className={styles.text} data-testid={`${dataTestId}.Paragraph`}>
+          {children}
+        </p>
+      )}
     </div>
   );
 };
