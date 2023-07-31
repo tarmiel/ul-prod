@@ -1,5 +1,5 @@
 import { cn } from 'shared/lib/classNames/classNames';
-import { ChangeEvent, FC, memo, useMemo } from 'react';
+import { ChangeEvent, useMemo } from 'react';
 import styles from './Select.module.scss';
 
 export interface SelectOption<T> {

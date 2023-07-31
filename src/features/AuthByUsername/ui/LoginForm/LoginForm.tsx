@@ -1,8 +1,9 @@
 import { FC, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { cn } from 'shared/lib/classNames/classNames';
 import DynamicModuleLoader, { ReducersList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
+import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { Button } from 'shared/ui/Button/Button';
 import Input from 'shared/ui/Input/Input';
 import { Text } from 'shared/ui/Text/Text';
@@ -13,7 +14,6 @@ import { getLoginUsername } from '../../model/selectors/getLoginUsername/getLogi
 import { loginByUsername } from '../../model/services/loginByUsername/loginByUsername';
 import { loginActions, loginReducer } from '../../model/slice/loginSlice';
 import styles from './LoginForm.module.scss';
-import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 
 const initialReducers: ReducersList = {
   loginForm: loginReducer,

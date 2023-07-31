@@ -1,9 +1,7 @@
 /* eslint-disable max-len */
 import type { Meta, StoryObj } from '@storybook/react';
-import ArticleList from './ArticleList';
-import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDecorator';
-import { Theme } from 'app/providers/ThemeProvider';
 import { Article } from '../../model/types/article';
+import ArticleList from './ArticleList';
 
 const meta: Meta<typeof ArticleList> = {
   title: 'entities/Article/ArticleList',

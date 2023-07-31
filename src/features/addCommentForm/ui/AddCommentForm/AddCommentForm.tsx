@@ -1,14 +1,15 @@
-import React, { FC, useCallback } from 'react';
-import styles from './AddCommentForm.module.scss';
-import DynamicModuleLoader, { ReducersList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { addCommentFormActions, addCommentFormReducer } from 'features/addCommentForm/model/slice/addCommentFromSlice';
-import { cn } from 'shared/lib/classNames/classNames';
-import Input from 'shared/ui/Input/Input';
+import { FC, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
-import { getAddCommentFormError, getAddCommentFormText } from '../../model/selectors/addCommentFormSelectors';
+import { cn } from 'shared/lib/classNames/classNames';
+import DynamicModuleLoader, { ReducersList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { Button } from 'shared/ui/Button/Button';
+import Input from 'shared/ui/Input/Input';
+import { HStack } from 'shared/ui/Stack';
+import { getAddCommentFormText } from '../../model/selectors/addCommentFormSelectors';
+import styles from './AddCommentForm.module.scss';
 
 export interface IAddCommentFormProps {
   className?: string;
@@ -22,7 +23,6 @@ const initialReducers: ReducersList = {
 const AddCommentForm: FC<IAddCommentFormProps> = ({ onSendComment, className }) => {
   const { t } = useTranslation();
   const text = useSelector(getAddCommentFormText);
-  const error = useSelector(getAddCommentFormError);
   const dispatch = useAppDispatch();
 
   const onCommentTextChange = useCallback(
@@ -39,7 +39,7 @@ const AddCommentForm: FC<IAddCommentFormProps> = ({ onSendComment, className }) 
 
   return (
     <DynamicModuleLoader reducers={initialReducers} removeAfterUnmount>
-      <div className={cn(styles.AddCommentForm, {}, [className])}>
+      <HStack justify="between" align="center" max className={cn(styles.AddCommentForm, {}, [className])}>
         <Input
           className={styles.input}
           placeholder={t('Введите текст комментария')}
@@ -49,7 +49,7 @@ const AddCommentForm: FC<IAddCommentFormProps> = ({ onSendComment, className }) 
         <Button theme="outline" onClick={onSendHandler}>
           {t('Отправить')}
         </Button>
-      </div>
+      </HStack>
     </DynamicModuleLoader>
   );
 };

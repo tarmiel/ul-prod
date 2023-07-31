@@ -34,7 +34,6 @@ const Page: FC<IPageProps> = ({ children, onScrollEnd, className }) => {
   });
 
   const onScrollHandler = useThrottle((e: UIEvent<HTMLDivElement>) => {
-    console.log(scroll, e.currentTarget.scrollTop);
     dispatch(scrollSaveActions.setScrollPosition({ path: pathname, position: e.currentTarget.scrollTop }));
   }, 500);
 

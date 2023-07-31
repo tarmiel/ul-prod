@@ -8,6 +8,7 @@ import { RoutePath } from 'shared/config/routerConfig/routerConfig';
 import { cn } from 'shared/lib/classNames/classNames';
 import { Button } from 'shared/ui/Button/Button';
 import styles from './ArticleDetailsPageHeader.module.scss';
+import { HStack } from 'shared/ui/Stack';
 
 interface ArticleDetailsPageHeaderProps {
   className?: string;
@@ -29,7 +30,7 @@ export const ArticleDetailsPageHeader = (props: ArticleDetailsPageHeaderProps) =
   }, [article?.id, navigate]);
 
   return (
-    <div className={cn(styles.ArticleDetailsPageHeader, {}, [className])}>
+    <HStack max justify="between" className={className}>
       <Button theme="outline" onClick={onBackToList}>
         {t('Назад к списку')}
       </Button>
@@ -38,6 +39,6 @@ export const ArticleDetailsPageHeader = (props: ArticleDetailsPageHeaderProps) =
           {t('Редактировать')}
         </Button>
       )}
-    </div>
+    </HStack>
   );
 };

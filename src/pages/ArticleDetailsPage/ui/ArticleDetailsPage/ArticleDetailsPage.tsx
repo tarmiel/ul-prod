@@ -1,28 +1,15 @@
-import { ArticleDetails, ArticleList } from 'entities/Article';
-import { CommentList } from 'entities/Comment';
-import { AddCommentForm } from 'features/addCommentForm';
-import { FC, memo, useCallback } from 'react';
+import { ArticleDetails } from 'entities/Article';
+import { FC, memo } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useSelector } from 'react-redux';
-import { useNavigate, useParams } from 'react-router-dom';
-import { RoutePath } from 'shared/config/routerConfig/routerConfig';
+import { useParams } from 'react-router-dom';
 import { cn } from 'shared/lib/classNames/classNames';
 import DynamicModuleLoader, { ReducersList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
-import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
-import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
-import { Button } from 'shared/ui/Button/Button';
-import { Text } from 'shared/ui/Text/Text';
 import Page from 'widgets/Page/Page';
-import { getArticleCommentsIsLoading } from '../../model/selectors/comments';
-import { getArticleRecommendationsIsLoading } from '../../model/selectors/recommendations';
-import { addCommentForArticle } from '../../model/services/addCommentForArticle/addCommentForArticle';
-import { fetchCommentsByArticleId } from '../../model/services/fetchCommentsByArticleId/fetchCommentsByArticleId';
-import { articleDetailsCommentsReducer, getArticleComments } from '../../model/slice/articleDetailsCommentsSlice';
-import { getArticleRecommendations } from '../../model/slice/articleDetailsPageRecommendationsSlice';
 import styles from './ArticleDetailsPage.module.scss';
-// eslint-disable-next-line max-len
-import { fetchArticleRecommendations } from '../../model/services/fetchArticleRecommendations/fetchArticleRecommendations';
+import { ArticleRecommendationsList } from 'features/articleRecommendationsList';
+import { VStack } from 'shared/ui/Stack';
 import { articleDetailsPageReducer } from '../../model/slice';
+import ArticleDetailsComments from '../ArticleDetailsComments/ArticleDetailsComments';
 import { ArticleDetailsPageHeader } from '../ArticleDetailsPageHeader/ArticleDetailsPageHeader';
 
 interface IArticleDetailsPageProps {
@@ -36,23 +23,7 @@ const initialReducers: ReducersList = {
 const ArticleDetailsPage: FC<IArticleDetailsPageProps> = ({ className }) => {
   const { t } = useTranslation('article-details');
   const { id } = useParams<{ id: string }>();
-  const dispatch = useAppDispatch();
-  const comments = useSelector(getArticleComments.selectAll);
-  const commentsIsLoading = useSelector(getArticleCommentsIsLoading);
-  const recommendations = useSelector(getArticleRecommendations.selectAll);
-  const recommendationsIsLoading = useSelector(getArticleRecommendationsIsLoading);
 
-  useInitialEffect(() => {
-    dispatch(fetchCommentsByArticleId(id));
-    dispatch(fetchArticleRecommendations());
-  });
-
-  const onSendComment = useCallback(
-    (text: string) => {
-      dispatch(addCommentForArticle(text));
-    },
-    [dispatch]
-  );
   if (!id) {
     return <Page className={cn(styles.ArticleDetailsPage, {}, [className])}>{t('Статья не найдена')}</Page>;
   }
@@ -60,19 +31,12 @@ const ArticleDetailsPage: FC<IArticleDetailsPageProps> = ({ className }) => {
   return (
     <DynamicModuleLoader reducers={initialReducers} removeAfterUnmount>
       <Page className={cn(styles.ArticleDetailsPage, {}, [className])}>
-        <ArticleDetailsPageHeader />
-        <ArticleDetails id={id} />
-        <Text size="large" className={styles.commentTitle} title={t('Рекомендуем')} />
-        <ArticleList
-          articles={recommendations}
-          isLoading={recommendationsIsLoading}
-          className={styles.recommendations}
-          target="_blank"
-        />
-
-        <Text title={t('Комментарии')} className={styles.commentTitle} />
-        <AddCommentForm onSendComment={onSendComment} />
-        <CommentList isLoading={commentsIsLoading} comments={comments} />
+        <VStack gap="16" max>
+          <ArticleDetailsPageHeader />
+          <ArticleDetails id={id} />
+          <ArticleRecommendationsList />
+          <ArticleDetailsComments id={id} />
+        </VStack>
       </Page>
     </DynamicModuleLoader>
   );
