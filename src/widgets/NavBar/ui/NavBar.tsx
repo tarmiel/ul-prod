@@ -51,11 +51,11 @@ const NavBar: FC<INavBarProps> = ({ className }) => {
           items={[
             ...(isAdminPanel
               ? [
-                  {
-                    content: t('Админка'),
-                    href: RoutePath.admin_panel,
-                  },
-                ]
+                {
+                  content: t('Админка'),
+                  href: RoutePath.admin_panel,
+                },
+              ]
               : []),
             {
               content: t('Профиль'),
