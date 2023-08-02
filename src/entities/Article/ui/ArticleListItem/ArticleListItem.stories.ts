@@ -1,10 +1,12 @@
 /* eslint-disable max-len */
 import type { Meta, StoryObj } from '@storybook/react';
+
 import { Article } from '../../model/types/article';
+
 import ArticleListItem from './ArticleListItem';
 
 const meta: Meta<typeof ArticleListItem> = {
-  title: 'entities/Article/ArticleListItem',
+  title: '@/entities/Article/ArticleListItem',
   component: ArticleListItem,
   argTypes: {},
 };

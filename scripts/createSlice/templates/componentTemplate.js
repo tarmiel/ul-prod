@@ -1,7 +1,7 @@
 const interfaceConst = 'interface';
 
 module.exports = (componentName) => `import React, { FC } from 'react'
-import { cn } from 'shared/lib/classNames/classNames';
+import { cn } from '@/shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
 import styles from './${componentName}.module.scss';
 

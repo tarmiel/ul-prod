@@ -1,7 +1,10 @@
 import { FC } from 'react';
+
 import { useTranslation } from 'react-i18next';
-import { VStack } from 'shared/ui/Stack';
-import { Text } from 'shared/ui/Text/Text';
+
+import { VStack } from '@/shared/ui/Stack';
+import { Text } from '@/shared/ui/Text/Text';
+
 import { Comment } from '../../model/types/comment';
 import CommentCard from '../CommentCard/CommentCard';
 

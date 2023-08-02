@@ -1,9 +1,11 @@
 import React, { FC, memo } from 'react';
-import styles from './ArticleTextBlockComponent.module.scss';
+
+import { cn } from '@/shared/lib/classNames/classNames';
+import { Text } from '@/shared/ui/Text/Text';
+
 import { ArticleTextBlock } from '../../model/types/article';
-styles;
-import { cn } from 'shared/lib/classNames/classNames';
-import { Text } from 'shared/ui/Text/Text';
+
+import styles from './ArticleTextBlockComponent.module.scss';
 
 interface IArticleTextBlockComponentProps {
   className?: string;

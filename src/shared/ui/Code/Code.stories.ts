@@ -1,8 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react';
+
 import Code from './Code';
 
 const meta: Meta<typeof Code> = {
-  title: 'shared/Code',
+  title: '@/shared/Code',
   component: Code,
   argTypes: {},
 };
@@ -14,7 +15,7 @@ export const Normal: Story = {
   args: {
     text:
       'export default {\n' +
-      "    title: 'shared/Code',\n" +
+      "    title: '@/shared/Code',\n" +
       '    component: Code,\n' +
       '    argTypes: {\n' +
       "        backgroundColor: { control: 'color' },\n" +

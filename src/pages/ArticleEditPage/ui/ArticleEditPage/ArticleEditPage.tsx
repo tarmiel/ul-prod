@@ -1,9 +1,13 @@
-import { cn } from 'shared/lib/classNames/classNames';
-import { useTranslation } from 'react-i18next';
 import { memo } from 'react';
+
+import { useTranslation } from 'react-i18next';
 import { useParams } from 'react-router-dom';
+
+import { cn } from '@/shared/lib/classNames/classNames';
+import Page from '@/widgets/Page/Page';
+
 import cls from './ArticleEditPage.module.scss';
-import Page from 'widgets/Page/Page';
+
 
 interface ArticleEditPageProps {
   className?: string;

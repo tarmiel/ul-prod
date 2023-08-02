@@ -1,8 +1,12 @@
-import React, { FC, ReactNode, useCallback, useEffect } from 'react';
-import styles from './Modal.module.scss';
-import { cn } from 'shared/lib/classNames/classNames';
+import React, { FC, ReactNode } from 'react';
+
+import { useTheme } from '@/app/providers/ThemeProvider';
+import { cn } from '@/shared/lib/classNames/classNames';
+import { useModal } from '@/shared/lib/hooks/useModal/useModal';
+
 import { Portal } from '../Portal/Portal';
-import { useTheme } from 'app/providers/ThemeProvider';
+
+import styles from './Modal.module.scss';
 
 interface IModalProps {
   isOpen?: boolean;
@@ -10,39 +14,26 @@ interface IModalProps {
   children?: ReactNode;
 }
 
+const ANIMATION_DELAY = 300;
+
 const Modal: FC<IModalProps> = ({ children, isOpen, onClose }) => {
   const { theme } = useTheme();
-  const closeHandler = useCallback(() => {
-    if (onClose) onClose();
-  }, [onClose]);
+  const { close, isClosing, isMounted } = useModal({
+    animationDelay: ANIMATION_DELAY,
+    onClose,
+    isOpen,
+  });
 
   const contentClick = (e: React.MouseEvent) => {
     e.stopPropagation();
   };
 
-  const onKeyDown = useCallback(
-    (e: KeyboardEvent) => {
-      if (e.key === 'Escape') {
-        closeHandler();
-      }
-    },
-    [closeHandler]
-  );
-
-  useEffect(() => {
-    if (isOpen) {
-      window.addEventListener('keydown', onKeyDown);
-    }
-
-    return () => {
-      window.removeEventListener('keydown', onKeyDown);
-    };
-  }, [isOpen, onKeyDown]);
+  if (!isMounted) return null;
 
   return (
     <Portal>
-      <div className={cn(styles.Modal, { [styles.open]: isOpen }, [theme, 'app_modal'])}>
-        <div className={styles.overlay} onClick={onClose}>
+      <div className={cn(styles.Modal, { [styles.open]: isOpen, [styles.isClosing]: isClosing }, [theme, 'app_modal'])}>
+        <div className={styles.overlay} onClick={close}>
           <div className={styles.content} onClick={contentClick}>
             {children}
           </div>

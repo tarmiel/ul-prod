@@ -1,6 +1,8 @@
 import React, { FC } from 'react';
+
+import Loader from '@/shared/ui/Loader/Loader';
+
 import styles from './PageLoader.module.scss';
-import Loader from 'shared/ui/Loader/Loader';
 
 const PageLoader: FC = ({}) => {
   return (

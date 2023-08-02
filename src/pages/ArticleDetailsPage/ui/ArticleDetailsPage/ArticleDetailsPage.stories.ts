@@ -1,10 +1,10 @@
 /* eslint-disable max-len */
 import type { Meta, StoryObj } from '@storybook/react';
+
+import { Article } from '@/entities/Article';
+import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
+
 import ArticleDetailsPage from './ArticleDetailsPage';
-import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDecorator';
-import { Theme } from 'app/providers/ThemeProvider';
-import { StoreDecorator } from 'shared/config/storybook/StoreDecorator/StoreDecorator';
-import { Article } from 'entities/Article';
 
 const article: Article = {
   id: '1',
@@ -47,7 +47,7 @@ const article: Article = {
 };
 
 const meta: Meta<typeof ArticleDetailsPage> = {
-  title: 'pages/ArticleDetailsPage/ArticleDetailsPage',
+  title: '@/pages/ArticleDetailsPage/ArticleDetailsPage',
   component: ArticleDetailsPage,
   argTypes: {},
   decorators: [

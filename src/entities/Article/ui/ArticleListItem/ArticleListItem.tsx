@@ -1,16 +1,20 @@
 import { FC, HTMLAttributeAnchorTarget } from 'react';
+
 import { useTranslation } from 'react-i18next';
-import EyeIcon from 'shared/assets/icons/eye-20-20.svg';
-import { RoutePath } from 'shared/config/routerConfig/routerConfig';
-import { cn } from 'shared/lib/classNames/classNames';
-import { AppLink } from 'shared/ui/AppLink/AppLink';
-import { Avatar } from 'shared/ui/Avatar/Avatar';
-import { Button } from 'shared/ui/Button/Button';
-import Card from 'shared/ui/Card/Card';
-import Icon from 'shared/ui/Icon/Icon';
-import { Text } from 'shared/ui/Text/Text';
+
+import EyeIcon from '@/shared/assets/icons/eye-20-20.svg';
+import { RoutePath } from '@/shared/config/routerConfig/routerConfig';
+import { cn } from '@/shared/lib/classNames/classNames';
+import { AppLink } from '@/shared/ui/AppLink/AppLink';
+import { Avatar } from '@/shared/ui/Avatar/Avatar';
+import { Button } from '@/shared/ui/Button/Button';
+import Card from '@/shared/ui/Card/Card';
+import Icon from '@/shared/ui/Icon/Icon';
+import { Text } from '@/shared/ui/Text/Text';
+
 import { Article, ArticleTextBlock, ArticleView } from '../../model/types/article';
 import ArticleTextBlockComponent from '../ArticleTextBlockComponent/ArticleTextBlockComponent';
+
 import styles from './ArticleListItem.module.scss';
 
 interface IArticleListItemProps {

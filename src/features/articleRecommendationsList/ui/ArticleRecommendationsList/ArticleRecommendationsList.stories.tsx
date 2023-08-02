@@ -1,11 +1,12 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
+import { Article } from '@/entities/Article';
+import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
+
 import { ArticleRecommendationsList } from './ArticleRecommendationsList';
-import { StoreDecorator } from 'shared/config/storybook/StoreDecorator/StoreDecorator';
-import { Article } from 'entities/Article';
 
 const meta: Meta<typeof ArticleRecommendationsList> = {
-  title: 'features/ArticleRecommendationsList',
+  title: '@/features/ArticleRecommendationsList',
   component: ArticleRecommendationsList,
   argTypes: {},
 };

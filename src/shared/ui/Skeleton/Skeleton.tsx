@@ -1,6 +1,8 @@
 import React, { CSSProperties, FC, memo } from 'react';
+
+import { cn } from '@/shared/lib/classNames/classNames';
+
 import styles from './Skeleton.module.scss';
-import { cn } from 'shared/lib/classNames/classNames';
 
 interface ISkeletonProps extends Pick<CSSProperties, 'width' | 'height' | 'borderRadius'> {
   className?: string;

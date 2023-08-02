@@ -1,9 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react';
+
+import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
+
 import SideBar from './SideBar';
-import { StoreDecorator } from 'shared/config/storybook/StoreDecorator/StoreDecorator';
 
 const meta: Meta<typeof SideBar> = {
-  title: 'widgets/SideBar',
+  title: '@/widgets/SideBar',
   component: SideBar,
   argTypes: {},
 };

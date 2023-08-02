@@ -1,16 +1,20 @@
-import React, { FC, memo, useCallback, useState } from 'react';
-import { cn } from 'shared/lib/classNames/classNames';
-import styles from './NavBar.module.scss';
-import { Button } from 'shared/ui/Button/Button';
+import { FC, memo, useCallback, useState } from 'react';
+
 import { useTranslation } from 'react-i18next';
-import { LoginModal } from 'features/AuthByUsername';
-import { useDispatch, useSelector } from 'react-redux';
-import { getUserAuthData, isUserAdmin, isUserManager, userActions } from 'entities/User';
-import { Text } from 'shared/ui/Text/Text';
-import { AppLink } from 'shared/ui/AppLink/AppLink';
-import { RoutePath } from 'shared/config/routerConfig/routerConfig';
-import { Dropdown } from 'shared/ui/Dropdown/Dropdown';
-import { Avatar } from 'shared/ui/Avatar/Avatar';
+import { useSelector } from 'react-redux';
+
+import { getUserAuthData } from '@/entities/User';
+import { LoginModal } from '@/features/AuthByUsername';
+import { AvatarDropdown } from '@/features/avatarDropdown';
+import { NotificationButton } from '@/features/notificationButton';
+import { RoutePath } from '@/shared/config/routerConfig/routerConfig';
+import { cn } from '@/shared/lib/classNames/classNames';
+import { AppLink } from '@/shared/ui/AppLink/AppLink';
+import { Button } from '@/shared/ui/Button/Button';
+import { HStack } from '@/shared/ui/Stack';
+import { Text } from '@/shared/ui/Text/Text';
+
+import styles from './NavBar.module.scss';
 
 interface INavBarProps {
   className?: string;
@@ -20,9 +24,6 @@ const NavBar: FC<INavBarProps> = ({ className }) => {
   const { t } = useTranslation();
   const [isAuthModal, setIsAuthModal] = useState(false);
   const authData = useSelector(getUserAuthData);
-  const isAdmin = useSelector(isUserAdmin);
-  const isManager = useSelector(isUserManager);
-  const dispatch = useDispatch();
 
   const onCloseModal = useCallback(() => {
     setIsAuthModal(false);
@@ -32,12 +33,6 @@ const NavBar: FC<INavBarProps> = ({ className }) => {
     setIsAuthModal(true);
   }, []);
 
-  const onLogout = useCallback(() => {
-    dispatch(userActions.logout());
-  }, [dispatch]);
-
-  const isAdminPanel = isAdmin || isManager;
-
   if (authData) {
     return (
       <header className={cn(styles.NavBar, {}, [className])}>
@@ -45,29 +40,10 @@ const NavBar: FC<INavBarProps> = ({ className }) => {
         <AppLink to={RoutePath.article_create} theme="secondary" className={styles.createBtn}>
           {t('Создать статью')}
         </AppLink>
-        <Dropdown
-          direction="bottom left"
-          className={styles.dropdown}
-          items={[
-            ...(isAdminPanel
-              ? [
-                {
-                  content: t('Админка'),
-                  href: RoutePath.admin_panel,
-                },
-              ]
-              : []),
-            {
-              content: t('Профиль'),
-              href: RoutePath.profile + authData.id,
-            },
-            {
-              content: t('Выйти'),
-              onClick: onLogout,
-            },
-          ]}
-          trigger={<Avatar size={30} src={authData.avatar} />}
-        />
+        <HStack gap="16" align="center">
+          <NotificationButton />
+          <AvatarDropdown />
+        </HStack>
       </header>
     );
   }

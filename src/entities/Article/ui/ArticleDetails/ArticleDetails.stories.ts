@@ -1,11 +1,14 @@
 /* eslint-disable max-len */
 import type { Meta, StoryObj } from '@storybook/react';
-import ArticleDetails from './ArticleDetails';
-import { StoreDecorator } from 'shared/config/storybook/StoreDecorator/StoreDecorator';
+
+import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
+
 import { Article } from '../../model/types/article';
 
+import ArticleDetails from './ArticleDetails';
+
 const meta: Meta<typeof ArticleDetails> = {
-  title: 'entities/Article/ArticleDetails',
+  title: '@/entities/Article/ArticleDetails',
   component: ArticleDetails,
   argTypes: {},
 };

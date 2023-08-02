@@ -1,11 +1,17 @@
 import React, { FC, HTMLAttributeAnchorTarget } from 'react';
-import styles from './ArticleList.module.scss';
+
+import { useTranslation } from 'react-i18next';
+
+import { cn } from '@/shared/lib/classNames/classNames';
+import { Text } from '@/shared/ui/Text/Text';
+
 import { Article, ArticleView } from '../../model/types/article';
-import { cn } from 'shared/lib/classNames/classNames';
 import ArticleListItem from '../ArticleListItem/ArticleListItem';
 import ArticleListItemSkeleton from '../ArticleListItem/ArticleListItemSkeleton';
-import { Text } from 'shared/ui/Text/Text';
-import { useTranslation } from 'react-i18next';
+
+import styles from './ArticleList.module.scss';
+
+
 
 interface IArticleListProps {
   className?: string;

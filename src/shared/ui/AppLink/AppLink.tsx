@@ -1,6 +1,9 @@
 import React, { FC } from 'react';
+
 import { Link, LinkProps } from 'react-router-dom';
-import { cn } from 'shared/lib/classNames/classNames';
+
+import { cn } from '@/shared/lib/classNames/classNames';
+
 import styles from './AppLink.module.scss';
 
 interface IAppLinkProps extends LinkProps {

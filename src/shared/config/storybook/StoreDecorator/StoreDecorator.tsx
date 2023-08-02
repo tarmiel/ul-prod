@@ -3,14 +3,14 @@
 
 import { ReducersMapObject } from '@reduxjs/toolkit';
 import { Decorator } from '@storybook/react';
-import { StateSchema, StoreProvider } from 'app/providers/StoreProvider';
-import { articleDetailsReducer } from 'entities/Article/model/slice/articleSlice';
 
-import { loginReducer } from 'features/AuthByUsername';
-import { addCommentFormReducer } from 'features/addCommentForm/model/slice/addCommentFromSlice';
-import { profileReducer } from 'features/editableProfileCard';
-import { articleDetailsPageReducer } from 'pages/ArticleDetailsPage/model/slice';
-import { ReducersList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
+import { StateSchema, StoreProvider } from '@/app/providers/StoreProvider';
+import { articleDetailsReducer } from '@/entities/Article/model/slice/articleSlice';
+import { addCommentFormReducer } from '@/features/addCommentForm/model/slice/addCommentFromSlice';
+import { loginReducer } from '@/features/AuthByUsername';
+import { profileReducer } from '@/features/editableProfileCard';
+import { articleDetailsPageReducer } from '@/pages/ArticleDetailsPage/model/slice';
+import { ReducersList } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 
 const defaultReducers: ReducersList = {
   loginForm: loginReducer,

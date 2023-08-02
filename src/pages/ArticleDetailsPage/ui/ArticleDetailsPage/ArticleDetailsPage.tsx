@@ -1,16 +1,20 @@
-import { ArticleDetails } from 'entities/Article';
 import { FC, memo } from 'react';
+
 import { useTranslation } from 'react-i18next';
 import { useParams } from 'react-router-dom';
-import { cn } from 'shared/lib/classNames/classNames';
-import DynamicModuleLoader, { ReducersList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
-import Page from 'widgets/Page/Page';
-import styles from './ArticleDetailsPage.module.scss';
-import { ArticleRecommendationsList } from 'features/articleRecommendationsList';
-import { VStack } from 'shared/ui/Stack';
+
+import { ArticleDetails } from '@/entities/Article';
+import { ArticleRecommendationsList } from '@/features/articleRecommendationsList';
+import { cn } from '@/shared/lib/classNames/classNames';
+import DynamicModuleLoader, { ReducersList } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
+import { VStack } from '@/shared/ui/Stack';
+import Page from '@/widgets/Page/Page';
+
 import { articleDetailsPageReducer } from '../../model/slice';
 import ArticleDetailsComments from '../ArticleDetailsComments/ArticleDetailsComments';
 import { ArticleDetailsPageHeader } from '../ArticleDetailsPageHeader/ArticleDetailsPageHeader';
+
+import styles from './ArticleDetailsPage.module.scss';
 
 interface IArticleDetailsPageProps {
   className?: string;

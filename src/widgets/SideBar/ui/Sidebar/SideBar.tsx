@@ -1,14 +1,18 @@
 import { FC, memo, useMemo, useState } from 'react';
-import { cn } from 'shared/lib/classNames/classNames';
-import { Button } from 'shared/ui/Button/Button';
-import { LangSwitcher } from 'widgets/LangSwitcher';
-import ThemeSwitcher from 'widgets/ThemeSwitcher/ui/ThemeSwitcher';
-import SideBarItem from '../SidebarItem/SideBarItem';
-import styles from './SideBar.module.scss';
+
 import { useSelector } from 'react-redux';
-import { getUserAuthData } from 'entities/User';
-import { getSideBarItems } from 'widgets/SideBar/model/selectors/getSideBarItems';
-import { VStack } from 'shared/ui/Stack';
+
+import { getUserAuthData } from '@/entities/User';
+import { cn } from '@/shared/lib/classNames/classNames';
+import { Button } from '@/shared/ui/Button/Button';
+import { VStack } from '@/shared/ui/Stack';
+import { LangSwitcher } from '@/widgets/LangSwitcher';
+import { getSideBarItems } from '@/widgets/SideBar/model/selectors/getSideBarItems';
+import ThemeSwitcher from '@/widgets/ThemeSwitcher/ui/ThemeSwitcher';
+
+import SideBarItem from '../SidebarItem/SideBarItem';
+
+import styles from './SideBar.module.scss';
 
 const SideBar: FC = ({}) => {
   const [isCollapsed, setCollapsed] = useState(false);

@@ -1,8 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react';
+
 import CommentCard from './CommentCard';
 
 const meta: Meta<typeof CommentCard> = {
-  title: 'entities/Comment/CommentCard',
+  title: '@/entities/Comment/CommentCard',
   component: CommentCard,
   argTypes: {},
 };

@@ -1,5 +1,6 @@
-import { Decorator, Story } from '@storybook/react';
 import { Suspense } from 'react';
+
+import { Decorator } from '@storybook/react';
 
 export const SuspenseDecorator: Decorator = (Story) => (
   <Suspense>
