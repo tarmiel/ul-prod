@@ -8,11 +8,12 @@ interface ICardProps extends React.HTMLAttributes<HTMLDivElement> {
   className?: string;
   children: ReactNode;
   theme?: 'normal' | 'outlined';
+  max?: boolean;
 }
 
-const Card: FC<ICardProps> = ({ children, className, theme = 'normal', ...otrProps }) => {
+const Card: FC<ICardProps> = ({ children, className, theme = 'normal', max, ...otrProps }) => {
   return (
-    <div className={cn(styles.Card, {}, [className, styles[theme]])} {...otrProps}>
+    <div className={cn(styles.Card, { [styles.max]: max }, [className, styles[theme]])} {...otrProps}>
       {children}
     </div>
   );

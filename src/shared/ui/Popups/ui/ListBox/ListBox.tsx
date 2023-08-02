@@ -12,7 +12,6 @@ import { mapDirectionClass } from '../../styles/consts';
 import cls from './ListBox.module.scss';
 import popupCls from '../../styles/popup.module.scss';
 
-
 export interface ListBoxItem {
   value: string;
   content: ReactNode;
@@ -45,7 +44,7 @@ export function ListBox(props: ListBoxProps) {
         value={value}
         onChange={onChange}
       >
-        <HListBox.Button disabled={readonly} className={cls.trigger}>
+        <HListBox.Button as="div" className={cls.trigger}>
           <Button disabled={readonly}>{value ?? defaultValue}</Button>
         </HListBox.Button>
         <HListBox.Options className={cn(cls.options, {}, optionsClasses)}>
