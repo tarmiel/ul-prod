@@ -3,7 +3,7 @@ import { FC, HTMLAttributeAnchorTarget } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import EyeIcon from '@/shared/assets/icons/eye-20-20.svg';
-import { RoutePath } from '@/shared/config/routerConfig/routerConfig';
+import { getRouteArticleDetails } from '@/shared/const/router';
 import { cn } from '@/shared/lib/classNames/classNames';
 import { AppLink } from '@/shared/ui/AppLink/AppLink';
 import { Avatar } from '@/shared/ui/Avatar/Avatar';
@@ -51,7 +51,7 @@ const ArticleListItem: FC<IArticleListItemProps> = ({ article, view, target, cla
           <img className={styles.img} src={article.img} alt={article.title} />
           {textBlock && <ArticleTextBlockComponent block={textBlock} className={styles.textBlock} />}
           <div className={styles.footer}>
-            <AppLink target={target} to={RoutePath.article_details + article.id}>
+            <AppLink target={target} to={getRouteArticleDetails(article.id)}>
               <Button theme="outline">{t('Читать далее...')}</Button>
             </AppLink>
             {views}
@@ -63,7 +63,7 @@ const ArticleListItem: FC<IArticleListItemProps> = ({ article, view, target, cla
   return (
     <AppLink
       target={target}
-      to={RoutePath.article_details + article.id}
+      to={getRouteArticleDetails(article.id)}
       className={cn(styles.ArticleListItem, {}, [className, styles[view]])}
     >
       <Card className={styles.card}>

@@ -2,13 +2,15 @@ import React, { FC, Suspense, useCallback } from 'react';
 
 import { Route, Routes } from 'react-router-dom';
 
-import { AppRouteProps, routerConfig } from '@/shared/config/routerConfig/routerConfig';
+import { AppRoutesProps } from '@/shared/types/router';
 import { PageLoader } from '@/widgets/PageLoader';
+
+import { routeConfig } from '../config/routerConfig';
 
 import { RequireAuth } from './RequireAuth';
 
 const AppRouter: FC = ({}) => {
-  const renderWithWrapper = useCallback((route: AppRouteProps) => {
+  const renderWithWrapper = useCallback((route: AppRoutesProps) => {
     const element = <Suspense fallback={<PageLoader />}>{route.element}</Suspense>;
     return (
       <Route
@@ -18,7 +20,7 @@ const AppRouter: FC = ({}) => {
       />
     );
   }, []);
-  return <Routes>{Object.values(routerConfig).map(renderWithWrapper)}</Routes>;
+  return <Routes>{Object.values(routeConfig).map(renderWithWrapper)}</Routes>;
 };
 
 export default AppRouter;

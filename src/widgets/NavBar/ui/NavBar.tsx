@@ -7,7 +7,7 @@ import { getUserAuthData } from '@/entities/User';
 import { LoginModal } from '@/features/AuthByUsername';
 import { AvatarDropdown } from '@/features/avatarDropdown';
 import { NotificationButton } from '@/features/notificationButton';
-import { RoutePath } from '@/shared/config/routerConfig/routerConfig';
+import { getRouteArticleCreate } from '@/shared/const/router';
 import { cn } from '@/shared/lib/classNames/classNames';
 import { AppLink } from '@/shared/ui/AppLink/AppLink';
 import { Button } from '@/shared/ui/Button/Button';
@@ -37,7 +37,7 @@ const NavBar: FC<INavBarProps> = ({ className }) => {
     return (
       <header className={cn(styles.NavBar, {}, [className])}>
         <Text title={t('Some App')} theme="inverted" />
-        <AppLink to={RoutePath.article_create} theme="secondary" className={styles.createBtn}>
+        <AppLink to={getRouteArticleCreate()} theme="secondary" className={styles.createBtn}>
           {t('Создать статью')}
         </AppLink>
         <HStack gap="16" align="center">

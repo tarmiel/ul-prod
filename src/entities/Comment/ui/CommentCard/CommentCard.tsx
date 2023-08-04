@@ -1,6 +1,6 @@
 import { FC, memo } from 'react';
 
-import { RoutePath } from '@/shared/config/routerConfig/routerConfig';
+import { getRouteProfile } from '@/shared/const/router';
 import { cn } from '@/shared/lib/classNames/classNames';
 import { AppLink } from '@/shared/ui/AppLink/AppLink';
 import { Avatar } from '@/shared/ui/Avatar/Avatar';
@@ -31,9 +31,13 @@ const CommentCard: FC<ICommentCardProps> = ({ comment, isLoading, className }) =
     );
   }
 
+  if (!comment) {
+    return null;
+  }
+
   return (
     <VStack max gap="8" className={cn(styles.CommentCard, {}, [className])}>
-      <AppLink to={`${RoutePath.profile}${comment?.user.id}`} className={styles.header}>
+      <AppLink to={getRouteProfile(comment.user.id)} className={styles.header}>
         {comment?.user?.avatar && <Avatar size={30} src={comment.user.avatar} />}
         <Text className={styles.username} title={comment?.user.username} />
       </AppLink>
