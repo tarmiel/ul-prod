@@ -10,16 +10,17 @@ import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch
 import { useInfiniteScroll } from '@/shared/lib/hooks/useInfiniteScroll/useInfiniteScroll';
 import { useInitialEffect } from '@/shared/lib/hooks/useInitialEffect/useInitialEffect';
 import { useThrottle } from '@/shared/lib/hooks/useThrottle/useThrottle';
+import { TestProps } from '@/shared/types/tests';
 
 import styles from './Page.module.scss';
 
-interface IPageProps {
+interface IPageProps extends TestProps {
   className?: string;
   onScrollEnd?: () => void;
   children?: ReactNode;
 }
 
-const Page: FC<IPageProps> = ({ children, onScrollEnd, className }) => {
+const Page: FC<IPageProps> = ({ children, onScrollEnd, className, ...props }) => {
   const dispatch = useAppDispatch();
   const { pathname } = useLocation();
   const scrollPosition = useSelector((state: StateSchema) => getSavedScrollByPath(state, pathname));
@@ -42,10 +43,15 @@ const Page: FC<IPageProps> = ({ children, onScrollEnd, className }) => {
   }, 500);
 
   return (
-    <section ref={wrapperRef} className={cn(styles.Page, {}, [className])} onScroll={onScrollHandler}>
+    <main
+      data-testid={props['data-testid'] ?? 'Page'}
+      ref={wrapperRef}
+      className={cn(styles.Page, {}, [className])}
+      onScroll={onScrollHandler}
+    >
       {children}
       {onScrollEnd ? <div className={styles.trigger} ref={triggerRef}></div> : null}
-    </section>
+    </main>
   );
 };
 
