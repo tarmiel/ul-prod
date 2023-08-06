@@ -38,11 +38,11 @@ export const AvatarDropdown = (props: AvatarDropdownProps) => {
       items={[
         ...(isAdminPanelAvailable
           ? [
-            {
-              content: t('Админка'),
-              href: getRouteAdmin(),
-            },
-          ]
+              {
+                content: t('Админка'),
+                href: getRouteAdmin(),
+              },
+            ]
           : []),
         {
           content: t('Профиль'),
@@ -53,7 +53,7 @@ export const AvatarDropdown = (props: AvatarDropdownProps) => {
           onClick: onLogout,
         },
       ]}
-      trigger={<Avatar size={30} src={authData.avatar} />}
+      trigger={<Avatar fallbackInverted size={30} src={authData.avatar} />}
     />
   );
 };

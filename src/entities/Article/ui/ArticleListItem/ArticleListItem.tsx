@@ -5,11 +5,13 @@ import { useTranslation } from 'react-i18next';
 import EyeIcon from '@/shared/assets/icons/eye-20-20.svg';
 import { getRouteArticleDetails } from '@/shared/const/router';
 import { cn } from '@/shared/lib/classNames/classNames';
+import { AppImage } from '@/shared/ui/AppImage';
 import { AppLink } from '@/shared/ui/AppLink/AppLink';
 import { Avatar } from '@/shared/ui/Avatar/Avatar';
 import { Button } from '@/shared/ui/Button/Button';
 import Card from '@/shared/ui/Card/Card';
 import Icon from '@/shared/ui/Icon/Icon';
+import Skeleton from '@/shared/ui/Skeleton/Skeleton';
 import { Text } from '@/shared/ui/Text/Text';
 
 import { Article, ArticleTextBlock, ArticleView } from '../../model/types/article';
@@ -68,7 +70,12 @@ const ArticleListItem: FC<IArticleListItemProps> = ({ article, view, target, cla
     >
       <Card className={styles.card}>
         <div className={styles.imageWrapper}>
-          <img className={styles.img} src={article.img} alt={article.title} />
+          <AppImage
+            fallback={<Skeleton width="100%" height={200} />}
+            src={article.img}
+            className={styles.img}
+            alt={article.title}
+          />
           <Text className={styles.date}>{article.createdAt}</Text>
         </div>
         <div className={styles.infoWrapper}>
