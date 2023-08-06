@@ -27,6 +27,11 @@
     "prepare": "husky install",
     "generate:slice": "node ./scripts/createSlice/index.js"
   },
+  "lint-staged": {
+    "**/*.{ts,tsx}": [
+      "eslint"
+    ]
+  },
   "keywords": [],
   "author": "Tarmiel",
   "license": "ISC",
