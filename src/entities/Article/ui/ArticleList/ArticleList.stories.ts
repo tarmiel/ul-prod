@@ -6,7 +6,7 @@ import { Article } from '../../model/types/article';
 import ArticleList from './ArticleList';
 
 const meta: Meta<typeof ArticleList> = {
-  title: '@/entities/Article/ArticleList',
+  title: 'entities/Article/ArticleList',
   component: ArticleList,
   argTypes: {},
 };

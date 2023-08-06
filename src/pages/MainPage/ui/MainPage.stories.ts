@@ -6,7 +6,7 @@ import { Theme } from '@/shared/const/theme';
 import MainPage from './MainPage';
 
 const meta: Meta<typeof MainPage> = {
-  title: '@/pages/MainPage',
+  title: 'pages/MainPage',
   component: MainPage,
   argTypes: {},
 };

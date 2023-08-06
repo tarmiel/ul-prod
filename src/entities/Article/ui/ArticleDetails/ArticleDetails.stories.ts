@@ -8,7 +8,7 @@ import { Article } from '../../model/types/article';
 import ArticleDetails from './ArticleDetails';
 
 const meta: Meta<typeof ArticleDetails> = {
-  title: '@/entities/Article/ArticleDetails',
+  title: 'entities/Article/ArticleDetails',
   component: ArticleDetails,
   argTypes: {},
 };

@@ -6,7 +6,7 @@ import { Theme } from '@/shared/const/theme';
 import NotFoundPage from './NotFoundPage';
 
 const meta: Meta<typeof NotFoundPage> = {
-  title: '@/pages/NotFoundPage',
+  title: 'pages/NotFoundPage',
   component: NotFoundPage,
   argTypes: {},
 };

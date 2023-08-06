@@ -6,7 +6,7 @@ import { Theme } from '@/shared/const/theme';
 import ThemeSwitcher from './ThemeSwitcher';
 
 const meta: Meta<typeof ThemeSwitcher> = {
-  title: '@/widgets/ThemeSwitcher',
+  title: 'widgets/ThemeSwitcher',
   component: ThemeSwitcher,
   argTypes: {},
 };

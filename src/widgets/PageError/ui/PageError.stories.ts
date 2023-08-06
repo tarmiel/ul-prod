@@ -6,7 +6,7 @@ import { Theme } from '@/shared/const/theme';
 import { PageError } from './PageError';
 
 const meta: Meta<typeof PageError> = {
-  title: '@/widgets/PageError',
+  title: 'widgets/PageError',
   component: PageError,
   argTypes: {},
 };

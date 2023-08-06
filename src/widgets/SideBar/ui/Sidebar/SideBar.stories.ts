@@ -5,7 +5,7 @@ import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDe
 import SideBar from './SideBar';
 
 const meta: Meta<typeof SideBar> = {
-  title: '@/widgets/SideBar',
+  title: 'widgets/SideBar',
   component: SideBar,
   argTypes: {},
 };

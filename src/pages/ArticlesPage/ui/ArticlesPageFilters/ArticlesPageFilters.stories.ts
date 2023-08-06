@@ -7,7 +7,7 @@ import { Theme } from '@/shared/const/theme';
 import ArticlesPageFilters from './ArticlesPageFilters';
 
 const meta: Meta<typeof ArticlesPageFilters> = {
-  title: '@/pages/ArticlesPage/ArticlesPageFilters',
+  title: 'pages/ArticlesPage/ArticlesPageFilters',
   component: ArticlesPageFilters,
   argTypes: {},
   decorators: [StoreDecorator({})],

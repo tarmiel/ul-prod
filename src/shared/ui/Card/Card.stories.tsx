@@ -5,7 +5,7 @@ import { Text } from '@/shared/ui/Text/Text';
 import Card from './Card';
 
 const meta: Meta<typeof Card> = {
-  title: '@/shared/Card',
+  title: 'shared/Card',
   component: Card,
   argTypes: {},
 };

@@ -7,7 +7,7 @@ import { Theme } from '@/shared/const/theme';
 import NavBar from './NavBar';
 
 const meta: Meta<typeof NavBar> = {
-  title: '@/widgets/NavBar',
+  title: 'widgets/NavBar',
   component: NavBar,
   argTypes: {},
 };

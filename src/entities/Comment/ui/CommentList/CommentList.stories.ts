@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import CommentList from './CommentList';
 
 const meta: Meta<typeof CommentList> = {
-  title: '@/entities/Comment/CommentList',
+  title: 'entities/Comment/CommentList',
   component: CommentList,
   argTypes: {},
 };

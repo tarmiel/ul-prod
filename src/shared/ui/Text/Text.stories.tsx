@@ -6,7 +6,7 @@ import { Theme } from '@/shared/const/theme';
 import { Text } from './Text';
 
 const meta: Meta<typeof Text> = {
-  title: '@/shared/Text',
+  title: 'shared/Text',
   component: Text,
   argTypes: {},
 };

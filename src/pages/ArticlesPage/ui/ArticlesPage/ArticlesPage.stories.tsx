@@ -8,7 +8,7 @@ import { Theme } from '@/shared/const/theme';
 import ArticlesPage from './ArticlesPage';
 
 const meta: Meta<typeof ArticlesPage> = {
-  title: '@/pages/ArticlesPage/ArticlesPage',
+  title: 'pages/ArticlesPage/ArticlesPage',
   component: ArticlesPage,
   argTypes: {},
   decorators: [StoreDecorator({})],

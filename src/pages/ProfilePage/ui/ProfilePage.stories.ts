@@ -9,7 +9,7 @@ import { Theme } from '@/shared/const/theme';
 import ProfilePage from './ProfilePage';
 
 const meta: Meta<typeof ProfilePage> = {
-  title: '@/pages/ProfilePage',
+  title: 'pages/ProfilePage',
   component: ProfilePage,
   argTypes: {},
 };

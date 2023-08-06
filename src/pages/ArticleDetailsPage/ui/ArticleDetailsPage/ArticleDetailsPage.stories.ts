@@ -47,7 +47,7 @@ const article: Article = {
 };
 
 const meta: Meta<typeof ArticleDetailsPage> = {
-  title: '@/pages/ArticleDetailsPage/ArticleDetailsPage',
+  title: 'pages/ArticleDetailsPage/ArticleDetailsPage',
   component: ArticleDetailsPage,
   argTypes: {},
   decorators: [

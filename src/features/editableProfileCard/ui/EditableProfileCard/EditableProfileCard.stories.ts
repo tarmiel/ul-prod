@@ -5,7 +5,7 @@ import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDe
 import EditableProfileCard from './EditableProfileCard';
 
 const meta: Meta<typeof EditableProfileCard> = {
-  title: '@/features/editableProfileCard/EditableProfileCard',
+  title: 'features/editableProfileCard/EditableProfileCard',
   component: EditableProfileCard,
   argTypes: {},
   decorators: [StoreDecorator({})],
