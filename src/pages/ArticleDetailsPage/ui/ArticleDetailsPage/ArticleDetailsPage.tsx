@@ -4,10 +4,12 @@ import { useTranslation } from 'react-i18next';
 import { useParams } from 'react-router-dom';
 
 import { ArticleDetails } from '@/entities/Article';
+import { Counter } from '@/entities/Counter';
 import { ArticleRating } from '@/features/articleRating';
 import { ArticleRecommendationsList } from '@/features/articleRecommendationsList';
 import { cn } from '@/shared/lib/classNames/classNames';
 import DynamicModuleLoader, { ReducersList } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
+import { toggleFeatures } from '@/shared/lib/features';
 import { VStack } from '@/shared/ui/Stack';
 import Page from '@/widgets/Page/Page';
 
@@ -24,6 +26,8 @@ interface IArticleDetailsPageProps {
 const initialReducers: ReducersList = {
   articleDetailsPage: articleDetailsPageReducer,
 };
+
+const counter = <Counter key={'1'} />;
 
 const ArticleDetailsPage: FC<IArticleDetailsPageProps> = ({ className }) => {
   const { t } = useTranslation('article-details');

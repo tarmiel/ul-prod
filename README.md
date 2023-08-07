@@ -88,6 +88,38 @@ npm run start:dev или npm run start:dev:vite - запуск сервера + 
 
 Подробнее о [Storybook](/docs/storybook.md)
 
+Пример:
+
+```typescript jsx
+import React from 'react';
+import { ComponentStory, ComponentMeta } from '@storybook/react';
+
+import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator';
+import { Button, ButtonSize, ButtonTheme } from './Button';
+import { Theme } from '@/shared/const/theme';
+
+export default {
+  title: 'shared/Button',
+  component: Button,
+  argTypes: {
+    backgroundColor: { control: 'color' },
+  },
+} as ComponentMeta<typeof Button>;
+
+const Template: ComponentStory<typeof Button> = (args) => <Button {...args} />;
+
+export const Primary = Template.bind({});
+Primary.args = {
+  children: 'Text',
+};
+
+export const Clear = Template.bind({});
+Clear.args = {
+  children: 'Text',
+  theme: ButtonTheme.CLEAR,
+};
+```
+
 ---
 
 ## Конфигурация проекта
@@ -128,6 +160,26 @@ npm run start:dev или npm run start:dev:vite - запуск сервера + 
 
 Для асинхронного подключения редюсеров (чтобы не тянуть их в общий бандл) используется
 [DynamicModuleLoader](/src/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader.tsx)
+
+---
+
+### Работа с feature-flag
+
+Разрешено использование feature flags только с помощью хелпера toggleFeatures
+
+в него передается объект с опциями
+
+{
+name: название фича-флага,
+on: функция, которая отработает после Включения фичи
+of: функция, которая отработает после ВЫключения фичи
+}
+
+Для автоматического удаления фичи использовать скрипт remove-feature.ts,
+который принимает 2 аргумента
+
+1. Название удаляемого фича-флага
+2. Состояние (on\off)
 
 ---
 
