@@ -1,8 +1,8 @@
-@import "reset";
-@import "variables/global";
-@import "themes/normal";
-@import "themes/dark";
-@import "themes/orange";
+@import 'reset';
+@import 'variables/global';
+@import 'themes/normal';
+@import 'themes/dark';
+@import 'themes/orange';
 
 .app,
 .app_modal,
@@ -17,29 +17,40 @@
   min-height: 100vh;
   overflow: hidden;
 }
+.app_redesigned {
+  background: var(--bg-redesigned);
+  min-height: 100vh;
+  overflow: hidden;
+  font: var(--font-m-redesigned);
+  color: var(--text-redesigned);
+}
 
 .content-page {
   display: flex;
 }
 
 // webkit browsers
-*::-webkit-scrollbar {
+*::-webkit-scrollbar,
+.app *::-webkit-scrollbar {
   width: 12px; /* ширина scrollbar */
   height: 8px;
 }
 
-*::-webkit-scrollbar-track {
+*::-webkit-scrollbar-track,
+.app *::-webkit-scrollbar-track {
   background: var(--card-bg); /* цвет дорожки */
 }
 
-*::-webkit-scrollbar-thumb {
+*::-webkit-scrollbar-thumb,
+.app *::-webkit-scrollbar-thumb {
   background-color: var(--inverted-primary-color); /* цвет плашки */
   border-radius: 20px; /* закругления плашки */
   border: 2px solid var(--primary-color); /* padding вокруг плашки */
 }
 
 // firefox
-* {
+*,
+.app * {
   scrollbar-width: thin;
   scrollbar-color: var(--inverted-primary-color) transparent;
   scrollbar-track-color: red transparent;

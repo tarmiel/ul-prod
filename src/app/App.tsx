@@ -20,17 +20,7 @@ const App = () => {
     dispatch(userActions.initAuthData());
   }, [dispatch]);
 
-  return (
-    <div className={cn('app', {}, [theme])}>
-      <Suspense fallback={<div>app loading...</div>}>
-        <NavBar />
-        <div className="content-page">
-          <SideBar />
-          {inited && <AppRouter />}
-        </div>
-      </Suspense>
-    </div>
-  );
+  return <div className={cn('app_redesigned', {}, [theme])}>{inited && <AppRouter />}</div>;
 };
 
 export default App;

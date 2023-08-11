@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { CommentList } from '@/entities/Comment';
 import { AddCommentForm } from '@/features/addCommentForm';
+import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { useInitialEffect } from '@/shared/lib/hooks/useInitialEffect/useInitialEffect';
 import Loader from '@/shared/ui/Loader/Loader';
 import { VStack } from '@/shared/ui/Stack';
@@ -25,7 +26,7 @@ export const ArticleDetailsComments = (props: ArticleDetailsCommentsProps) => {
   const { t } = useTranslation();
   const comments = useSelector(getArticleComments.selectAll);
   const commentsIsLoading = useSelector(getArticleCommentsIsLoading);
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const onSendComment = useCallback(
     (text: string) => {
